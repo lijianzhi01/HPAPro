@@ -6,8 +6,14 @@ const host = '0.0.0.0';
     
 app.use(express.json());    
     
-const counter = new Counter({    
+const counter_requests = new Counter({    
     name: 'http_requests_total',    
+    help: 'Total number of http requests',    
+    labelNames: ['method'],    
+});  
+
+const counter_violations = new Counter({    
+    name: 'sla_violation_total',    
     help: 'Total number of http requests',    
     labelNames: ['method'],    
 });  
@@ -29,9 +35,13 @@ app.post('/fibonacci', (req, res) => {
     const start = Date.now(); // Start the timer  
   
     const fibonacciNumber = fibonacci(req.body.number);    
-    counter.inc({ method: 'POST' });  
+    counter_requests.inc({ method: 'POST' });  
   
     const responseTime = Date.now() - start; // Calculate the response time  
+    console.log("Response time: ", responseTime, "ms");
+    if (responseTime > 10) {
+        counter_violations.inc({ method: 'POST' });
+    }
     responseTimes.observe({ method: 'POST', status_code: res.statusCode }, responseTime / 1000); // Record to histogram, convert ms to seconds  
     
     res.send(`Fibonacci number is ${fibonacciNumber}!\n`);    

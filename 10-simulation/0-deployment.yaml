@@ -2,20 +2,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: express
+  name: simulation
   namespace: demo
 spec:
   selector:
     matchLabels:
-      app: express
+      app: simulation
   template:
     metadata:
       labels:
-        app: express
+        app: simulation
     spec:
       containers:
-      - image: lijianzhi01/app:0.0.4
-        name: express
+      - image: lijianzhi01/simulation:0.0.5
+        name: simulation
         ports:
         - name: http
           containerPort: 8081
