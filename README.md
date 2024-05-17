@@ -17,7 +17,7 @@ cd 0-express
 docker build . -t lijianzhi01/app:0.0.1
 docker push lijianzhi01/app:0.0.1
 
-cd 10-simulation
+cd 10-simulation/app
 docker build . -t lijianzhi01/simulation:0.0.3
 ```
 

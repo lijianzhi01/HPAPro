@@ -14,7 +14,7 @@ spec:
         app: simulation
     spec:
       containers:
-      - image: lijianzhi01/simulation:0.0.5
+      - image: lijianzhi01/simulation:0.0.6
         name: simulation
         ports:
         - name: http
