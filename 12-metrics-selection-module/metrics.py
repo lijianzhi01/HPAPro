@@ -30,7 +30,7 @@ def load_metrics():
     # Load metrics from JSON file    
     with open('metrics.json') as f:    
         metrics_json = json.load(f)  
-        
+
     step = 15    
     now = time.time()    
     start = ((now - 3600 * 4) // step) * step    
@@ -42,7 +42,7 @@ def load_metrics():
         data = fetch_metrics(metric, metric_info[0]["type"], start, end, step)    
         all_metrics_data[metric] = data  
 
-    return all_metrics_data
+    return metrics_json, all_metrics_data
 
 def save_merics_chart(metrics_data):
     num_columns = 10  # number of columns for the grid of charts  
