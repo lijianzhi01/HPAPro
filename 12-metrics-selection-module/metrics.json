@@ -1,0 +1,352 @@
+{
+    "container_cpu_cfs_periods_total": [
+        {
+            "type": "counter",
+            "unit": "",
+            "help": "Number of elapsed enforcement period intervals."
+        }
+    ],
+    "container_cpu_cfs_throttled_periods_total": [
+        {
+            "type": "counter",
+            "unit": "",
+            "help": "Number of throttled period intervals."
+        }
+    ],
+    "container_cpu_cfs_throttled_seconds_total": [
+        {
+            "type": "counter",
+            "unit": "",
+            "help": "Total time duration the container has been throttled."
+        }
+    ],
+    "container_cpu_load_average_10s": [
+        {
+            "type": "gauge",
+            "unit": "",
+            "help": "Value of container cpu load average over the last 10 seconds."
+        }
+    ],
+    "container_cpu_system_seconds_total": [
+        {
+            "type": "counter",
+            "unit": "",
+            "help": "Cumulative system cpu time consumed in seconds."
+        }
+    ],
+    "container_cpu_usage_seconds_total": [
+        {
+            "type": "counter",
+            "unit": "",
+            "help": "Cumulative cpu time consumed in seconds."
+        }
+    ],
+    "container_cpu_user_seconds_total": [
+        {
+            "type": "counter",
+            "unit": "",
+            "help": "Cumulative user cpu time consumed in seconds."
+        }
+    ],
+    "container_fs_inodes_free": [
+        {
+            "type": "gauge",
+            "unit": "",
+            "help": "Number of available Inodes"
+        }
+    ],
+    "container_fs_inodes_total": [
+        {
+            "type": "gauge",
+            "unit": "",
+            "help": "Number of Inodes"
+        }
+    ],
+    "container_fs_io_current": [
+        {
+            "type": "gauge",
+            "unit": "",
+            "help": "Number of I/Os currently in progress"
+        }
+    ],
+    "container_fs_io_time_seconds_total": [
+        {
+            "type": "counter",
+            "unit": "",
+            "help": "Cumulative count of seconds spent doing I/Os"
+        }
+    ],
+    "container_fs_io_time_weighted_seconds_total": [
+        {
+            "type": "counter",
+            "unit": "",
+            "help": "Cumulative weighted I/O time in seconds"
+        }
+    ],
+    "container_fs_limit_bytes": [
+        {
+            "type": "gauge",
+            "unit": "",
+            "help": "Number of bytes that can be consumed by the container on this filesystem."
+        }
+    ],
+    "container_fs_read_seconds_total": [
+        {
+            "type": "counter",
+            "unit": "",
+            "help": "Cumulative count of seconds spent reading"
+        }
+    ],
+    "container_fs_reads_merged_total": [
+        {
+            "type": "counter",
+            "unit": "",
+            "help": "Cumulative count of reads merged"
+        }
+    ],
+    "container_fs_reads_total": [
+        {
+            "type": "counter",
+            "unit": "",
+            "help": "Cumulative count of reads completed"
+        }
+    ],
+    "container_fs_sector_reads_total": [
+        {
+            "type": "counter",
+            "unit": "",
+            "help": "Cumulative count of sector reads completed"
+        }
+    ],
+    "container_fs_sector_writes_total": [
+        {
+            "type": "counter",
+            "unit": "",
+            "help": "Cumulative count of sector writes completed"
+        }
+    ],
+    "container_fs_usage_bytes": [
+        {
+            "type": "gauge",
+            "unit": "",
+            "help": "Number of bytes that are consumed by the container on this filesystem."
+        }
+    ],
+    "container_fs_write_seconds_total": [
+        {
+            "type": "counter",
+            "unit": "",
+            "help": "Cumulative count of seconds spent writing"
+        }
+    ],
+    "container_fs_writes_merged_total": [
+        {
+            "type": "counter",
+            "unit": "",
+            "help": "Cumulative count of writes merged"
+        }
+    ],
+    "container_fs_writes_total": [
+        {
+            "type": "counter",
+            "unit": "",
+            "help": "Cumulative count of writes completed"
+        }
+    ],
+    "container_last_seen": [
+        {
+            "type": "gauge",
+            "unit": "",
+            "help": "Last time a container was seen by the exporter"
+        }
+    ],
+    "container_memory_cache": [
+        {
+            "type": "gauge",
+            "unit": "",
+            "help": "Number of bytes of page cache memory."
+        }
+    ],
+    "container_memory_failcnt": [
+        {
+            "type": "counter",
+            "unit": "",
+            "help": "Number of memory usage hits limits"
+        }
+    ],
+    "container_memory_failures_total": [
+        {
+            "type": "counter",
+            "unit": "",
+            "help": "Cumulative count of memory allocation failures."
+        }
+    ],
+    "container_memory_mapped_file": [
+        {
+            "type": "gauge",
+            "unit": "",
+            "help": "Size of memory mapped files in bytes."
+        }
+    ],
+    "container_memory_max_usage_bytes": [
+        {
+            "type": "gauge",
+            "unit": "",
+            "help": "Maximum memory usage recorded in bytes"
+        }
+    ],
+    "container_memory_rss": [
+        {
+            "type": "gauge",
+            "unit": "",
+            "help": "Size of RSS in bytes."
+        }
+    ],
+    "container_memory_swap": [
+        {
+            "type": "gauge",
+            "unit": "",
+            "help": "Container swap usage in bytes."
+        }
+    ],
+    "container_memory_usage_bytes": [
+        {
+            "type": "gauge",
+            "unit": "",
+            "help": "Current memory usage in bytes, including all memory regardless of when it was accessed"
+        }
+    ],
+    "container_memory_working_set_bytes": [
+        {
+            "type": "gauge",
+            "unit": "",
+            "help": "Current working set in bytes."
+        }
+    ],
+    "container_network_receive_bytes_total": [
+        {
+            "type": "counter",
+            "unit": "",
+            "help": "Cumulative count of bytes received"
+        }
+    ],
+    "container_network_receive_errors_total": [
+        {
+            "type": "counter",
+            "unit": "",
+            "help": "Cumulative count of errors encountered while receiving"
+        }
+    ],
+    "container_network_receive_packets_dropped_total": [
+        {
+            "type": "counter",
+            "unit": "",
+            "help": "Cumulative count of packets dropped while receiving"
+        }
+    ],
+    "container_network_receive_packets_total": [
+        {
+            "type": "counter",
+            "unit": "",
+            "help": "Cumulative count of packets received"
+        }
+    ],
+    "container_network_transmit_bytes_total": [
+        {
+            "type": "counter",
+            "unit": "",
+            "help": "Cumulative count of bytes transmitted"
+        }
+    ],
+    "container_network_transmit_errors_total": [
+        {
+            "type": "counter",
+            "unit": "",
+            "help": "Cumulative count of errors encountered while transmitting"
+        }
+    ],
+    "container_network_transmit_packets_dropped_total": [
+        {
+            "type": "counter",
+            "unit": "",
+            "help": "Cumulative count of packets dropped while transmitting"
+        }
+    ],
+    "container_network_transmit_packets_total": [
+        {
+            "type": "counter",
+            "unit": "",
+            "help": "Cumulative count of packets transmitted"
+        }
+    ],
+    "container_oom_events_total": [
+        {
+            "type": "counter",
+            "unit": "",
+            "help": "Count of out of memory events observed for the container"
+        }
+    ],
+    "container_scrape_error": [
+        {
+            "type": "gauge",
+            "unit": "",
+            "help": "1 if there was an error while getting container metrics, 0 otherwise"
+        }
+    ],
+    "container_spec_cpu_period": [
+        {
+            "type": "gauge",
+            "unit": "",
+            "help": "CPU period of the container."
+        }
+    ],
+    "container_spec_cpu_quota": [
+        {
+            "type": "gauge",
+            "unit": "",
+            "help": "CPU quota of the container."
+        }
+    ],
+    "container_spec_cpu_shares": [
+        {
+            "type": "gauge",
+            "unit": "",
+            "help": "CPU share of the container."
+        }
+    ],
+    "container_spec_memory_limit_bytes": [
+        {
+            "type": "gauge",
+            "unit": "",
+            "help": "Memory limit for the container."
+        }
+    ],
+    "container_spec_memory_reservation_limit_bytes": [
+        {
+            "type": "gauge",
+            "unit": "",
+            "help": "Memory reservation limit for the container."
+        }
+    ],
+    "container_spec_memory_swap_limit_bytes": [
+        {
+            "type": "gauge",
+            "unit": "",
+            "help": "Memory swap limit for the container."
+        }
+    ],
+    "container_start_time_seconds": [
+        {
+            "type": "gauge",
+            "unit": "",
+            "help": "Start time of the container since unix epoch in seconds."
+        }
+    ],
+    "container_tasks_state": [
+        {
+            "type": "gauge",
+            "unit": "",
+            "help": "Number of tasks in given state"
+        }
+    ]
+}
