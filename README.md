@@ -21,3 +21,10 @@ cd 10-simulation/app
 docker build . -t lijianzhi01/simulation:0.0.3
 ```
 
+## Deploy Mongodb
+### Set up secret
+```bash
+# Git Bash
+kubectl create secret generic mongodb-secret --from-literal=mongo-root-username='jianzhili' -n demo
+kubectl patch secret mongodb-secret --type=merge --patch='{"stringData":{"mongo-root-password":"123456"}}' -n demo
+```

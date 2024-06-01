@@ -1,0 +1,40 @@
+1. container_memory_cache: This metric represents the amount of memory used for caching by a container. Cache memory stores frequently accessed data and instructions to speed up processes.
+  It's especially significant for applications that frequently read from or write to disk.
+  Database Applications: These include applications like MySQL, PostgreSQL, MongoDB, etc., which heavily rely on disk I/O. Caching can significantly speed up database operations by storing frequently accessed data in memory.
+  Web Servers and Caching Servers: Applications like Nginx, Apache, Varnish, or Memcached can benefit from caching. They often serve static content (like images, JavaScript, CSS files) that can be cached in memory to improve response times.
+   
+2. container_memory_failcnt: It shows the number of times memory allocation failed for a container. This can occur when a container tries to use more memory than allocated to it.  
+   
+3. container_memory_failures_total: This metric is a counter that represents the total number of memory failures in a container. It includes minor and major page faults.  
+   
+- 4. container_memory_mapped_file: This represents the amount of memory mapped by a file in a container. It's a part of memory that has been associated with some file data.  
+    memory_active_file: This metric represents the amount of memory that is actively being used by a container for file data. It is a subset of the container's working set.
+
+    perform a lot of file I/O operations or rely heavily on memory-mapped files
+    Database Applications: Both relational databases (like MySQL, PostgreSQL) and NoSQL databases (like MongoDB, Cassandra) often use memory-mapped files for efficient disk I/O operations. For example, MongoDB uses memory-mapped files to map data files into memory, allowing the operating system to handle caching of data.
+    Big Data Processing Applications: Tools like Apache Hadoop and Apache Spark that process large amounts of data often use memory-mapped files for efficient data handling.
+    Web Servers: Web servers like Nginx and Apache might use memory-mapped files for serving static content.
+   
+- 5. container_memory_max_usage_bytes: It shows the maximum amount of memory used by a container. This can help in understanding the peak memory usage and can be useful in capacity planning.  
+    memory_hierarchical_memory_limit: This metric represents the hierarchical memory limit for a container. It is the sum of the memory limits of the container and all its ancestors.
+
+- 6. container_memory_rss: This stands for Resident Set Size. It represents the amount of memory that a process has in main memory (not on disk or swap space). This includes both the shared and private memory of a container.  
+    memory_rss: This metric represents the amount of memory that a container's processes are using in RAM. It includes both shared and private memory.
+
+    The term "resident set" in computing refers to the portion of a process's memory that is held in RAM (Random Access Memory). This includes all the data and code from the process that is currently loaded and can be accessed directly without disk I/O operations, making it much faster to access.
+    pplications that need to frequently or quickly access certain data, such as database applications, in-memory caches, or real-time processing systems.
+
+7. container_memory_swap: This metric denotes the amount of swap memory used by a container. Swap is a portion of hard disk space that is used when the RAM is full.  
+    Database Applications: Databases like MySQL, PostgreSQL, or MongoDB, which manage large sets of data, may rely on swap memory during peak load times or if the data size exceeds the available RAM.
+    Web Servers: Web servers like Apache, Nginx, or Node.js may also use swap memory under heavy load when handling many concurrent connections.
+
+- 8. container_memory_usage_bytes: It shows the current memory usage of a container in bytes. This includes all memory regardless if it is resident or swap.  
+    mem_memused: This metric represents the amount of memory currently being used by a container. It is a measure of the total memory usage.
+
+9. container_memory_working_set_bytes: This metric represents the total amount of memory currently being used by a container, excluding inactive file pages. It is a measure of the "active" memory that a container is using.
+
+Does kubernetes container have memory_rss and mem_memused metrics? 
+
+
+I am studying predictive hpa. Lots of people set up cpu and memory usage to predict. But I think there are lots of cpu and memory metrics can be useful to specific application. Do you know any kind of application needs not only cpu and memory usage but something like memory_rss and mem_memused and cpu_busy?
+
