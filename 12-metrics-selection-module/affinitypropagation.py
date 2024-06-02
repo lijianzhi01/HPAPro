@@ -36,18 +36,18 @@ def cluster_metrics(metrics_list, metrics_data, metric_name='cpu'):
     print('Estimated number of clusters: %d' % n_clusters_)  
   
     # Plot result  
-    plt.figure(figsize=(10, 5 * n_clusters_))  # Adjust as needed  
+    plt.figure(figsize=(20, 5 * n_clusters_))  # Adjust as needed  
+    plt.title('Estimated number of clusters: %d' % n_clusters_)  
   
     colors = cycle('bgrcmykbgrcmykbgrcmykbgrcmyk')  
     for k, col in zip(range(n_clusters_), colors):  
         class_members = labels == k  
         cluster_center = timeseries_data[cluster_centers_indices[k]]  
         plt.subplot(n_clusters_, 1, k + 1)  
-        for x, metric_name in zip(timeseries_data[class_members], np.array(metric_names)[class_members]):  
-            plt.plot(x, col, label=metric_name)  
-        plt.plot(cluster_center, 'o', markerfacecolor=col, markeredgecolor='k', markersize=14)  
-        plt.legend()  
+        for x, t_metric_name in zip(timeseries_data[class_members], np.array(metric_names)[class_members]):  
+            plt.plot(x, col, label=t_metric_name)
+        # plt.plot(cluster_center, 'o', markerfacecolor=col, markeredgecolor='k', markersize=14)
+        plt.legend()
   
-    plt.title('Estimated number of clusters: %d' % n_clusters_)  
-    plt.savefig('clusters.png')  # Save plot to local file  
+    plt.savefig(f"clusters{metric_name}ap.png")  # Save plot to local file  
     # plt.show()  

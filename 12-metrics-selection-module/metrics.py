@@ -32,7 +32,7 @@ def load_metrics():
         metrics_json = json.load(f)  
 
     step = 15   
-    lookback = 3600 * 12  # 4 hours 
+    lookback = 3600 * 4  # 4 hours 
     # lookback = 60 * 20  # 20 minutes
     now = time.time()    
     start = ((now - lookback) // step) * step    

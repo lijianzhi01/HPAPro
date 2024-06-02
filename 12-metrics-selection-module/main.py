@@ -16,6 +16,9 @@ metrics_list, metrics_data = load_metrics()
 
 save_merics_chart(metrics_data)
 
-cluster_metrics(metrics_list, metrics_data, 'memory')
+cluster_metrics(metrics_list, metrics_data, '_cpu_')
+cluster_metrics(metrics_list, metrics_data, '_memory_')
+cluster_metrics(metrics_list, metrics_data, '_fs_')
+cluster_metrics(metrics_list, metrics_data, '_network_')
 
 # cluster_cpu_metrics(metrics_list, metrics_data)
