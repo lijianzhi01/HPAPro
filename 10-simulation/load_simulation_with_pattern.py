@@ -6,7 +6,11 @@ import requests
 from concurrent.futures import ThreadPoolExecutor  
   
 def send_request(port):  
+    start_time = time.time()  
     requests.post(f"http://127.0.0.1:{port}/fibonacci", json={"number": 30})  
+    end_time = time.time()  
+    response_time = end_time - start_time  
+    return response_time  
   
 def main(pattern, port):    
     start = time.time()  
@@ -35,8 +39,10 @@ def main(pattern, port):
   
         if x > 0:  
             # Send x requests in parallel    
-            with ThreadPoolExecutor(max_workers=x) as executor:    
-                executor.map(send_request, [port]*x)    
+            with ThreadPoolExecutor(max_workers=x) as executor:      
+                response_times = list(executor.map(send_request, [port]*x))  
+            average_response_time = sum(response_times) / len(response_times)  
+            print("Average response time: {:.2f} seconds".format(average_response_time))
     
         # Sleep before starting the next round of requests    
         if pattern == "bursting":    
