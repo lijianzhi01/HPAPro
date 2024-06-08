@@ -7,7 +7,7 @@ from concurrent.futures import ThreadPoolExecutor
   
 def send_request(port):  
     start_time = time.time()  
-    requests.post(f"http://127.0.0.1:{port}/fibonacci", json={"number": 30})  
+    requests.post(f"http://127.0.0.1:{port}/fibonacci", json={"number": 26})  
     end_time = time.time()  
     response_time = end_time - start_time  
     return response_time  
@@ -20,7 +20,7 @@ def main(pattern, port):
         if pattern == "bursting":    
             # Predictable Bursting Pattern    
             t = time.time() - start    
-            x = int(20 * (math.sin(t / 10) + 1) + 5)  
+            x = int(100 * (math.sin(t / 10) + 1) + 5)  
         elif pattern == "variations":    
             # Variations Pattern    
             x = random.randint(5, 45)  
