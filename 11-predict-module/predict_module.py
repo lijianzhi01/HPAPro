@@ -31,10 +31,14 @@ class PredictModule:
         now = datetime.datetime.now()  
         date_str = now.strftime("%Y%m%d%H%M")
         model_name = type(self.model).__name__
-        filename = f"{model_name}_{date_str}.pth"  
-        torch.save(self.model.state_dict(), f"./pth/{filename}")  
+        modelname = f"{model_name}_{date_str}.pth"  
+        modelpath = f"./pth/{modelname}"
+        torch.save(self.model.state_dict(), modelpath)
+        print(f"Model saved to {modelpath}")
 
         self.test_model()  
+
+        return modelpath
   
     
     # Sample Data: 

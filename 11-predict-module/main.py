@@ -15,5 +15,5 @@ config = {
 }  
 
 pm = PredictModule(LSTM, config)
-# pm.train()
-pm.predict("./pth/LSTM_202406110317.pth", pm.generate_test_data())
+modelpath = pm.train()
+pm.predict(modelpath, pm.generate_test_data())
