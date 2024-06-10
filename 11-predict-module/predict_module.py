@@ -6,7 +6,7 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import r2_score
 import datetime
   
-class Trainer:  
+class PredictModule:  
     def __init__(self, ModelClass, config):    
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')    
         self.csv_file = config['csv_file']  
@@ -19,25 +19,23 @@ class Trainer:
         self.learning_rate = config['learning_rate']  
         self.input_size = config['input_size']
         self.output_size = config['output_size']  
-    
-        self.data = self.load_data_from_csv()    
-        self.train_inout_seq, self.test_inout_seq = self.create_test_train_data_seq()    
-    
         self.model = ModelClass(self.input_size, self.output_size).to(self.device)
         self.criterion = torch.nn.MSELoss()    
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.learning_rate) 
   
-    def train(self):  
+    def train(self):
+        self.data = self.load_data_from_csv()    
+        self.train_inout_seq, self.test_inout_seq = self.create_test_train_data_seq()  
+
         self.train_model()
         now = datetime.datetime.now()  
         date_str = now.strftime("%Y%m%d%H%M")
         model_name = type(self.model).__name__
         filename = f"{model_name}_{date_str}.pth"  
         torch.save(self.model.state_dict(), f"./pth/{filename}")  
-  
-    def test(self):  
-        self.test_model()  
 
+        self.test_model()  
+  
     
     # Sample Data: 
     # start_time,machine_id,metric_value
@@ -60,7 +58,6 @@ class Trainer:
 
         # Convert DataFrame to numpy array    
         data = {machine: df[df['machine_id'] == machine]['metric_value'].values for machine in machines}
-        print(data)
 
         return data
 
@@ -97,7 +94,22 @@ class Trainer:
             squared_error_sum = 0
             
             for machine_id, data_loader in train_data_loader.items():  
-                for i, (seq, labels) in enumerate(data_loader):   
+                for i, (seq, labels) in enumerate(data_loader):  
+                    # seq sample: 
+                    # torch.Size([512, 144])
+                    # tensor([[1.1625e-01, 0.0000e+00, 1.3409e-02,  ..., 1.1812e-01, 1.1328e-01,
+                    #         1.3212e-01],
+                    #         [7.8305e-02, 6.1620e-03, 8.3026e-02,  ..., 8.1897e-02, 8.7666e-02,
+                    #         8.1270e-02],
+                    #         [0.0000e+00, 7.2096e-03, 1.1042e-01,  ..., 2.8846e-02, 1.0243e-01,
+                    #         1.3242e-02],
+                    #         ...,
+                    #         [0.0000e+00, 1.8987e-03, 0.0000e+00,  ..., 7.1344e-02, 7.5219e-03,
+                    #         8.5884e-02],
+                    #         [1.1898e-01, 4.4600e-04, 0.0000e+00,  ..., 7.5017e-06, 1.0585e-03,
+                    #         2.5554e-04],
+                    #         [9.8598e-02, 1.1002e-01, 1.2096e-01,  ..., 7.4919e-02, 8.7025e-02,
+                    #         4.7612e-02]]) 
                     seq = torch.FloatTensor(seq).view(-1, self.lookback_period, self.input_size).to(self.device)  
                     labels = torch.FloatTensor(labels).view(-1, self.predict_horizontal).to(self.device)  
         
@@ -148,4 +160,21 @@ class Trainer:
         
         r2 = r2_score(actuals, predictions)    
         
-        print('test RMSE: ', test_rmse/ttl, 'test MSE: ', test_mse/ttl, 'r2-score: ', r2)  
+        print('test RMSE: ', test_rmse/ttl, 'test MSE: ', test_mse/ttl, 'r2-score: ', r2)
+
+    def generate_test_data(self):  
+        # Generate a tensor  
+        random_data_to_predict = torch.rand((1, self.lookback_period))  
+        print("generate sample data: ", random_data_to_predict)
+        return random_data_to_predict
+
+    def predict(self, model_path, input_data):  
+        self.model.load_state_dict(torch.load(model_path))  
+        self.model.eval()  
+    
+        with torch.no_grad():   
+            input_data = torch.FloatTensor(input_data).view(-1, self.lookback_period, self.input_size).to(self.device)  
+            predictions = self.model(input_data)  
+        
+        print("prediction: ", predictions)
+        return predictions

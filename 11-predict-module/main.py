@@ -1,5 +1,5 @@
 from model.lstm import LSTM
-from trainer import Trainer
+from predict_module import PredictModule
 
 config = {  
     'csv_file': './data/gcd_cpu_usage_by_machine.csv',   
@@ -14,6 +14,6 @@ config = {
     'output_size': 6  
 }  
 
-trainer = Trainer(LSTM, config)
-trainer.train()  
-trainer.test()  
+pm = PredictModule(LSTM, config)
+# pm.train()
+pm.predict("./pth/LSTM_202406110317.pth", pm.generate_test_data())
