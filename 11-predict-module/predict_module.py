@@ -173,7 +173,7 @@ class PredictModule:
         return random_data_to_predict
 
     def predict(self, model_path, input_data):  
-        self.model.load_state_dict(torch.load(model_path))  
+        self.model.load_state_dict(torch.load(model_path, map_location=torch.device('cpu')))  
         self.model.eval()  
     
         with torch.no_grad():   
