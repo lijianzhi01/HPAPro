@@ -16,4 +16,6 @@ config = {
 
 pm = PredictModule(LSTM, config)
 # modelpath = pm.train()
-pm.predict('./pth/LSTM_202406110405.pth', pm.generate_test_data())
+# pm.predict('./pth/LSTM_202406110405.pth', pm.generate_test_data())
+# print(pm.load_data_from_prometheus())
+pm.predict('./pth/LSTM_202406110405.pth', pm.load_data_from_prometheus())

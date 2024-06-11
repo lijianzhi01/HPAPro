@@ -4,7 +4,9 @@ import pandas as pd
 import numpy as np  
 from sklearn.preprocessing import MinMaxScaler  
 from sklearn.metrics import r2_score
-import datetime
+import requests  
+import time
+from datetime import datetime, timedelta  
   
 class PredictModule:  
     def __init__(self, ModelClass, config):    
@@ -64,7 +66,26 @@ class PredictModule:
         data = {machine: df[df['machine_id'] == machine]['metric_value'].values for machine in machines}
 
         return data
-
+    
+    def load_data_from_prometheus(self):
+        params = {  
+            'query': 'sum(rate(container_cpu_usage_seconds_total{container_label_io_kubernetes_pod_namespace="demo"}[30s]))',  
+            'start': time.time() - 3600 * 1,  
+            'end': time.time(),  
+            'step': 15,  # define the interval of time (in seconds) between each data point
+        }  
+    
+        response = requests.get('http://localhost:9090/api/v1/query_range', params=params)  
+        data = response.json()  
+        values = data['data']['result'][0]['values']
+        df = pd.DataFrame(values, columns=['timestamp', 'cpu_usage'])
+        df['timestamp'] = pd.to_datetime(df['timestamp'], unit='s')  
+        df = df.iloc[-self.lookback_period:]  
+        print(df)  
+        # Drop the timestamp column  
+        cpu_values = torch.FloatTensor(df['cpu_usage'].values.astype(float))
+        return cpu_values  
+    
     # Create sequences    
     def create_sequences(self, input_data):    
         inout_seq = []    
