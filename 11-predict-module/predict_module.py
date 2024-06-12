@@ -6,7 +6,7 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import r2_score
 import requests  
 import time
-from datetime import datetime  
+import datetime
   
 class PredictModule:  
     def __init__(self, ModelClass, config):    
