@@ -32,3 +32,11 @@ If you are running a Kubernetes service on Minikube, you can access it from your
     ```bash
     curl -d '{"number": 30}' -H "Content-Type: application/json" -s "http://127.0.0.1:54155/fibonacci"
     ```
+
+
+# Static Simulation
+1. Generate RPS
+   ```pwsh
+   py .\rps_generator.py bursting 3600
+   py .\rps_generator.py variations 3600
+   ```

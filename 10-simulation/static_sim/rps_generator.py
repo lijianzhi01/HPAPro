@@ -19,7 +19,19 @@ def main(pattern, num_datapoints):
                 x = x * random.uniform(1, 1.1)
         elif pattern == "variations":  
             # Variations Pattern  
-            x = random.randint(5, 45)  
+            if i < 600 and i % 600 < 600 and i % 600 >= 550:
+                if i % 600 < 560:
+                    x = random.randint(40, 50)
+                elif i % 600 < 570:
+                    x = random.randint(60, 70)
+                elif i % 600 < 580:
+                    x = random.randint(80, 90)
+                elif i % 600 < 590:
+                    x = random.randint(90, 100)
+                else:
+                    x = random.randint(100, 120)
+            else:
+                x = int(20 * (math.sin(i / 200 * 2 * math.pi) + 1) + 5) * random.uniform(0.2, 1.1)
         elif pattern == "onoff":  
             # On Off Pattern  
             if i % (on_duration + off_duration) < on_duration:  
