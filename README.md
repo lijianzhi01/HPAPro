@@ -44,3 +44,21 @@ py main.py
 cd 10-simulation
 py .\load_simulation_with_pattern.py onoff  54155
 ```
+
+# Experiement for Predictable HPA
+### Step One: Generate Simulation
+
+Use [generator](./10-simulation/static_sim/rps_generator.py) to create sample data for either bursting or variations pattern. 
+
+Use [play](./10-simulation/static_sim/play_requests.py) to simulate.
+
+Use to generate CPU and Memory metrics data. 
+
+### Step Two: Train module
+
+### Step Three: Play and Predict
+Use [play](./10-simulation/static_sim/play_requests.py) to simulate.
+
+Use module to predict and scale application. 
+
+Check SLA.
