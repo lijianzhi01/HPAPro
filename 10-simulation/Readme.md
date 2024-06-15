@@ -40,3 +40,8 @@ If you are running a Kubernetes service on Minikube, you can access it from your
    py .\rps_generator.py bursting 3600
    py .\rps_generator.py variations 3600
    ```
+
+2. Playback to Generate Simulation Data
+   ```pwsh
+   py .\play_requests.py bursting-240615-222015.txt 62795
+   ```
