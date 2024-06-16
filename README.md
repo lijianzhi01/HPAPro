@@ -50,12 +50,14 @@ py .\load_simulation_with_pattern.py onoff  54155
 
 Use [generator](./10-simulation/static_sim/rps_generator.py) to create sample data for either bursting or variations pattern. 
 ```pwsh
+cd 10-simulation\static_sim\
 py .\rps_generator.py bursting 3600
 py .\rps_generator.py variations 3600
 ```
 
 Use [play](./10-simulation/static_sim/play_requests.py) to simulate.
 ```pwsh
+cd 10-simulation\static_sim\
 py .\play_requests.py bursting-240616-154338.txt 62795
 ```
 
