@@ -59,8 +59,9 @@ class PredictModule:
         df = df[['machine_id', 'metric_value']]    
 
         # Scale data to (0, 1) for LSTM    
-        scaler = MinMaxScaler(feature_range=(0, 1))    
-        df['metric_value'] = scaler.fit_transform(df['metric_value'].values.reshape(-1,1))    
+        self.scaler = MinMaxScaler(feature_range=(0, 1))  
+        self.scaler.fit(df['metric_value'].values.reshape(-1,1))  
+        df['metric_value'] = self.scaler.transform(df['metric_value'].values.reshape(-1,1))    
 
         # Convert DataFrame to numpy array    
         data = {machine: df[df['machine_id'] == machine]['metric_value'].values for machine in machines}
@@ -194,12 +195,16 @@ class PredictModule:
         return random_data_to_predict
 
     def predict(self, model_path, input_data):  
+        # To initialize minmaxscaler based on training data
+        self.load_data_from_csv()
+        input_data = self.scaler.transform(input_data.reshape(-1,1))    
         self.model.load_state_dict(torch.load(model_path, map_location=torch.device('cpu')))  
         self.model.eval()  
     
         with torch.no_grad():   
             input_data = torch.FloatTensor(input_data).view(-1, self.lookback_period, self.input_size).to(self.device)  
             predictions = self.model(input_data)  
+            predictions = self.scaler.inverse_transform(predictions)  
         
         print("prediction: ", predictions)
         return predictions
