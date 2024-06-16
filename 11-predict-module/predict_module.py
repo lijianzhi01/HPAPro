@@ -20,7 +20,7 @@ class PredictModule:
         self.num_epochs = config['num_epochs']  
         self.learning_rate = config['learning_rate']  
         self.input_size = config['input_size']
-        self.output_size = config['output_size']  
+        self.output_size = config['predict_horizontal']  
         self.model = ModelClass(self.input_size, self.output_size).to(self.device)
         self.criterion = torch.nn.MSELoss()    
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.learning_rate) 
