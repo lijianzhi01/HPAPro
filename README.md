@@ -49,10 +49,21 @@ py .\load_simulation_with_pattern.py onoff  54155
 ### Step One: Generate Simulation
 
 Use [generator](./10-simulation/static_sim/rps_generator.py) to create sample data for either bursting or variations pattern. 
+```pwsh
+py .\rps_generator.py bursting 3600
+py .\rps_generator.py variations 3600
+```
 
 Use [play](./10-simulation/static_sim/play_requests.py) to simulate.
+```pwsh
+py .\play_requests.py bursting-240615-222015.txt 62795
+```
 
 Use to generate CPU and Memory metrics data. 
+```pwsh
+cd 11-predict-module
+py .\export_metrics.py --start_time 20240616001300 --end_time 20240616002515 --pattern bursting
+```
 
 ### Step Two: Train module
 
