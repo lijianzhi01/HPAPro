@@ -1,0 +1,6 @@
+{
+    "port": 62795,
+    "rps_record": "bursting-240616-154338.txt",
+    "duration": 1200,
+    "predictor": "Lstm001"
+}

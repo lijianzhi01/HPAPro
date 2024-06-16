@@ -1,5 +1,6 @@
 import sys  
 import time  
+import os
 import requests  
 from concurrent.futures import ThreadPoolExecutor  
   
@@ -10,9 +11,10 @@ def send_request(port):
     response_time = end_time - start_time  
     return response_time  
   
-def main(filename, port):  
+def start_play(filename, port):  
     line_number = 0  
-    with open(filename, 'r') as file:  
+    filepath = f'''{os.path.dirname(__file__)}/{filename}'''
+    with open(filepath, 'r') as file:  
         for line in file:  
             line_number += 1  
             concurrent_requests = int(float(line.strip()))  
@@ -30,4 +32,4 @@ if __name__ == "__main__":
         print(f"Usage: {sys.argv[0]} <filename> <port>")  
         sys.exit(1)  
   
-    main(sys.argv[1], sys.argv[2])  
+    start_play(sys.argv[1], sys.argv[2])  

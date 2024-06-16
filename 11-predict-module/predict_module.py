@@ -21,12 +21,12 @@ class PredictModule:
         self.learning_rate = config['learning_rate']  
         self.input_size = config['input_size']
         self.output_size = config['predict_horizontal']  
+        self.data = self.load_data_from_csv()
         self.model = ModelClass(self.input_size, self.output_size).to(self.device)
         self.criterion = torch.nn.MSELoss()    
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.learning_rate) 
   
     def train(self):
-        self.data = self.load_data_from_csv()    
         self.train_inout_seq, self.test_inout_seq = self.create_test_train_data_seq()  
 
         self.train_model()
@@ -82,7 +82,7 @@ class PredictModule:
         df = pd.DataFrame(values, columns=['timestamp', 'cpu_usage'])
         df['timestamp'] = pd.to_datetime(df['timestamp'], unit='s')  
         df = df.iloc[-self.lookback_period:]  
-        print(df)  
+        # print(df)  
         # Drop the timestamp column  
         cpu_values = torch.FloatTensor(df['cpu_usage'].values.astype(float))
         return cpu_values  
@@ -195,8 +195,6 @@ class PredictModule:
         return random_data_to_predict
 
     def predict(self, model_path, input_data):  
-        # To initialize minmaxscaler based on training data
-        self.load_data_from_csv()
         input_data = self.scaler.transform(input_data.reshape(-1,1))    
         self.model.load_state_dict(torch.load(model_path, map_location=torch.device('cpu')))  
         self.model.eval()  
