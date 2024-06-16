@@ -12,7 +12,7 @@ def load_data_from_prometheus(start_time_str, end_time_str, pattern):
         'query': 'sum(rate(container_cpu_usage_seconds_total{container_label_io_kubernetes_pod_namespace="demo"}[30s]))',    
         'start': start_time,    
         'end': end_time,    
-        'step': 30,  # define the interval of time (in seconds) between each data point  
+        'step': 15,  # define the interval of time (in seconds) between each data point  
     }    
   
     response = requests.get('http://localhost:9090/api/v1/query_range', params=params)    

@@ -56,7 +56,7 @@ py .\rps_generator.py variations 3600
 
 Use [play](./10-simulation/static_sim/play_requests.py) to simulate.
 ```pwsh
-py .\play_requests.py bursting-240615-222015.txt 62795
+py .\play_requests.py bursting-240616-154338txt 62795
 ```
 
 Use to generate CPU and Memory metrics data. 
