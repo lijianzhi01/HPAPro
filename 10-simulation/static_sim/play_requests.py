@@ -6,7 +6,7 @@ from concurrent.futures import ThreadPoolExecutor
   
 def send_request(port):  
     start_time = time.time()  
-    requests.post(f"http://127.0.0.1:{port}/fibonacci", json={"number": 26})  
+    requests.post(f"http://127.0.0.1:{port}/fibonacci", json={"number": 36})  
     end_time = time.time()  
     response_time = end_time - start_time  
     return response_time  

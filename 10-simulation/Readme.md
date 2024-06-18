@@ -43,5 +43,5 @@ If you are running a Kubernetes service on Minikube, you can access it from your
 
 2. Playback to Generate Simulation Data
    ```pwsh
-   py .\play_requests.py bursting-240615-222015.txt 62795
+   py .\play_requests.py bursting-240616-154338.txt 62795
    ```

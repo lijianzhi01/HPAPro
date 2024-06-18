@@ -1,31 +1,19 @@
-const { Counter, Histogram, register } = require('prom-client');    
+const { Histogram, register } = require('prom-client');    
 const express = require('express');    
 const app = express();    
 const port = 8081;    
 const host = '0.0.0.0';    
     
-app.use(express.json());    
-    
-const counter_requests = new Counter({    
-    name: 'http_requests_total',    
-    help: 'Total number of http requests',    
-    labelNames: ['method'],    
-});  
-
-const counter_violations = new Counter({    
-    name: 'sla_violation_total',    
-    help: 'Total number of http requests',    
-    labelNames: ['method'],    
-});  
+app.use(express.json());     
   
 // Create a histogram metric  
 const responseTimes = new Histogram({  
   name: 'http_response_time_seconds',  
   help: 'Histogram of http response durations',  
   labelNames: ['method', 'status_code'],  
-  buckets: [0.1, 0.2, 0.3, 0.4, 0.5, 1, 2, 5] // Buckets for response time from 0.1s to 5s  
-});  
-  
+  buckets: [100, 200, 300, 400, 500, 600, 700, 800] // Buckets for response time from 0.1s to 5s  
+});
+
 const fibonacci = (num) => {    
     if (num <= 1) return 1;    
     return fibonacci(num - 1) + fibonacci(num - 2);    
@@ -35,14 +23,10 @@ app.post('/fibonacci', (req, res) => {
     const start = Date.now(); // Start the timer  
   
     const fibonacciNumber = fibonacci(req.body.number);    
-    counter_requests.inc({ method: 'POST' });  
   
     const responseTime = Date.now() - start; // Calculate the response time  
     console.log("Response time: ", responseTime, "ms");
-    if (responseTime > 10) {
-        counter_violations.inc({ method: 'POST' });
-    }
-    responseTimes.observe({ method: 'POST', status_code: res.statusCode }, responseTime / 1000); // Record to histogram, convert ms to seconds  
+    responseTimes.observe({ method: 'POST', status_code: res.statusCode}, responseTime); // Record to histogram, convert ms to seconds  
     
     res.send(`Fibonacci number is ${fibonacciNumber}!\n`);    
 });    
