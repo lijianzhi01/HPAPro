@@ -160,3 +160,9 @@ Check SLA.
 cd 7-cadvisor
 py .\metrics_loader.py --start_time 1718554172 --threshold 0.1
 ```
+
+# 3. Run the Simulation
+```bash
+py ./start_experiment.py
+py ./predict_and_evaluate.py
+```
