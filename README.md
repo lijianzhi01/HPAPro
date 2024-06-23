@@ -11,6 +11,8 @@ kubectl -n grafana port-forward svc/grafana 3000
 kubectl port-forward svc/prometheus-operated 9090 -n monitoring
 
 minikube service express -n demo
+
+minikube service predictapp -n demo
 ```
 
 

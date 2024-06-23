@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: predictapp
+  namespace: demo
+spec:
+  selector:
+    matchLabels:
+      app: predictapp
+  template:
+    metadata:
+      labels:
+        app: predictapp
+    spec:
+      containers:
+      - image: lijianzhi01/predictapp:0.0.2
+        name: predictapp
+        ports:
+        - name: http
+          containerPort: 8081
+        resources:
+          limits:
+            cpu: 500m
+            memory: 256Mi
+          requests:
+            cpu: 200m
+            memory: 128Mi
