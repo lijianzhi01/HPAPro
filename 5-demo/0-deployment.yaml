@@ -14,7 +14,7 @@ spec:
         app: express
     spec:
       containers:
-      - image: lijianzhi01/app:0.0.4
+      - image: lijianzhi01/app:0.0.11
         name: express
         ports:
         - name: http

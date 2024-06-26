@@ -29,7 +29,7 @@ app.post('/fibonacci', (req, res) => {
     responseTimes.observe({ method: 'POST', status_code: res.statusCode}, responseTime); // Record to histogram, convert ms to seconds  
     
     res.send(`Fibonacci number is ${fibonacciNumber}!\n`);    
-});    
+}); 
     
 app.get('/metrics', async (req, res) => {    
     res.set('Content-Type', register.contentType);    

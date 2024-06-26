@@ -14,7 +14,7 @@ spec:
         app: predictapp
     spec:
       containers:
-      - image: lijianzhi01/predictapp:0.0.2
+      - image: lijianzhi01/predictapp:0.0.3
         name: predictapp
         ports:
         - name: http
