@@ -1,7 +1,8 @@
 import sys   
 import json  
 import asyncio  
-from datetime import datetime  
+from datetime import datetime
+import numpy as np
   
 sys.path.insert(1, '11-predict-module')    
 from loader import Loader  
@@ -21,9 +22,8 @@ async def main():
     # Run predict and get_slo every 10 seconds  
     while True:  
         cpu = loader.pick(predictor).predict()  
-        print(f'Predicted CPU: {cpu}')
         last_slo = get_slo(datetime.now().timestamp() - 1200, slo_response_time)  
-        print(f'SLO: {last_slo}')
+        print(f'Current SLO: {last_slo} | Predicted Maximum CPU: {np.max(cpu)}')
         await asyncio.sleep(10)  
   
 # Run the main function in the asyncio event loop  
