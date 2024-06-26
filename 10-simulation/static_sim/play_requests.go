@@ -14,7 +14,7 @@ import (
 func sendRequest(port string, wg *sync.WaitGroup) {  
 	defer wg.Done()  
 	// startTime := time.Now()  
-	jsonStr := []byte(`{"number":30}`)  
+	jsonStr := []byte(`{"number":34}`)  
 	http.Post("http://127.0.0.1:"+port+"/fibonacci", "application/json", bytes.NewBuffer(jsonStr))  
 	// endTime := time.Now()  
 	// responseTime := endTime.Sub(startTime)  

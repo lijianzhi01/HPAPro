@@ -204,5 +204,5 @@ class PredictModule:
             predictions = self.model(input_data)  
             predictions = self.scaler.inverse_transform(predictions)  
         
-        print("prediction: ", predictions)
+        # print("prediction: ", predictions)
         return predictions

@@ -21,8 +21,7 @@ def scale_deployment(namespace, deployment, predicted_cpu):
             # Calculate the new replica size  
             new_replica_size = math.ceil(predicted_cpu / cpu_request_per_pod_milli)  
             api_response.spec.replicas = new_replica_size  
-            # api_instance.patch_namespaced_deployment_scale(name=deployment, namespace=namespace, body=api_response)  
-    
+            api_instance.patch_namespaced_deployment_scale(name=deployment, namespace=namespace, body=api_response)  
             print(f"Scaled deployment {deployment} to {api_response.spec.replicas} replicas. [Predicted CPU: {predicted_cpu}m, Current Requested CPU: {sum_up_requests}m={cpu_request_per_pod_milli}m*{current_replicas}]") 
         else:  
             print("No need to scale the deployment")
@@ -34,5 +33,5 @@ if __name__ == "__main__":
     if len(sys.argv) != 4:  
         print(f"Usage: {sys.argv[0]} <namespace> <deployment> <predicted_cpu>")  
         sys.exit(1)  
-  
+
     scale_deployment(sys.argv[1], sys.argv[2], float(sys.argv[3]))

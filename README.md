@@ -129,7 +129,7 @@ py .\load_simulation_with_pattern.py onoff  54155
 ```
 
 # 2. Experiement for Predictable HPA
-### Step One: Generate Simulation
+### Step One: Generate Simulation (deprecated)
 
 Use [generator](./10-simulation/static_sim/rps_generator.py) to create sample data for either bursting or variations pattern. 
 ```pwsh
@@ -150,6 +150,9 @@ cd 11-predict-module
 py .\export_metrics.py --start_time 20240616001300 --end_time 20240616002515 --pattern bursting
 ```
 
+### Step One: Simulation with JMeter
+TBD
+
 ### Step Two: Train module
 
 ### Step Three: Play and Predict
@@ -165,6 +168,6 @@ py .\metrics_loader.py --start_time 1718554172 --threshold 0.1
 
 # 3. Run the Simulation
 ```bash
-py ./start_experiment.py
+py ./start_experiment.py # deprecated
 py ./predict_and_evaluate.py
 ```
