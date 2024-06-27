@@ -1,38 +1,268 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
   <hashTree>
-    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="BurstingPattern">
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="SimulationPlan">
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
     </TestPlan>
     <hashTree>
-      <kg.apc.jmeter.timers.VariableThroughputTimer guiclass="kg.apc.jmeter.timers.VariableThroughputTimerGui" testclass="kg.apc.jmeter.timers.VariableThroughputTimer" testname="jp@gc - Throughput Shaping Timer">
+      <kg.apc.jmeter.timers.VariableThroughputTimer guiclass="kg.apc.jmeter.timers.VariableThroughputTimerGui" testclass="kg.apc.jmeter.timers.VariableThroughputTimer" testname="[Throughput Shaping Timer] Predictable Bursting">
         <collectionProp name="load_profile">
-          <collectionProp name="26934298">
-            <stringProp name="1">1</stringProp>
-            <stringProp name="51">3</stringProp>
-            <stringProp name="53">5</stringProp>
-          </collectionProp>
-          <collectionProp name="85362261">
-            <stringProp name="51">3</stringProp>
-            <stringProp name="56">8</stringProp>
-            <stringProp name="53">5</stringProp>
-          </collectionProp>
-          <collectionProp name="1818500899">
-            <stringProp name="56">8</stringProp>
+          <collectionProp name="-241843701">
+            <stringProp name="1567">10</stringProp>
             <stringProp name="1598">20</stringProp>
-            <stringProp name="53">5</stringProp>
+            <stringProp name="1722">60</stringProp>
           </collectionProp>
-          <collectionProp name="-211987187">
-            <stringProp name="1629">30</stringProp>
+          <collectionProp name="-238550354">
             <stringProp name="1598">20</stringProp>
-            <stringProp name="1629">30</stringProp>
+            <stringProp name="1572">15</stringProp>
+            <stringProp name="1722">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-239817293">
+            <stringProp name="1572">15</stringProp>
+            <stringProp name="1691">50</stringProp>
+            <stringProp name="1722">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-203472459">
+            <stringProp name="1691">50</stringProp>
+            <stringProp name="1660">40</stringProp>
+            <stringProp name="1722">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-261624999">
+            <stringProp name="1660">40</stringProp>
+            <stringProp name="1784">80</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-225206354">
+            <stringProp name="1784">80</stringProp>
+            <stringProp name="1722">60</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-231841873">
+            <stringProp name="1722">60</stringProp>
+            <stringProp name="1753">70</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-229645647">
+            <stringProp name="1753">70</stringProp>
+            <stringProp name="1634">35</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-266095726">
+            <stringProp name="1634">35</stringProp>
+            <stringProp name="1637">38</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-266952783">
+            <stringProp name="1637">38</stringProp>
+            <stringProp name="1573">16</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-296948879">
+            <stringProp name="1573">16</stringProp>
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-297805905">
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="1598">20</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-294512558">
+            <stringProp name="1598">20</stringProp>
+            <stringProp name="1572">15</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-295779497">
+            <stringProp name="1572">15</stringProp>
+            <stringProp name="1691">50</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-259434663">
+            <stringProp name="1691">50</stringProp>
+            <stringProp name="1660">40</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-261624999">
+            <stringProp name="1660">40</stringProp>
+            <stringProp name="1784">80</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-225206354">
+            <stringProp name="1784">80</stringProp>
+            <stringProp name="1722">60</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-231841873">
+            <stringProp name="1722">60</stringProp>
+            <stringProp name="1753">70</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-229645647">
+            <stringProp name="1753">70</stringProp>
+            <stringProp name="1634">35</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-266095726">
+            <stringProp name="1634">35</stringProp>
+            <stringProp name="1637">38</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-266952783">
+            <stringProp name="1637">38</stringProp>
+            <stringProp name="1573">16</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-296948879">
+            <stringProp name="1573">16</stringProp>
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-297805905">
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="1598">20</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-294512558">
+            <stringProp name="1598">20</stringProp>
+            <stringProp name="1572">15</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-295779497">
+            <stringProp name="1572">15</stringProp>
+            <stringProp name="1691">50</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-259434663">
+            <stringProp name="1691">50</stringProp>
+            <stringProp name="1660">40</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-261624999">
+            <stringProp name="1660">40</stringProp>
+            <stringProp name="1784">80</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-225206354">
+            <stringProp name="1784">80</stringProp>
+            <stringProp name="1722">60</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-231841873">
+            <stringProp name="1722">60</stringProp>
+            <stringProp name="1753">70</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-266095726">
+            <stringProp name="1634">35</stringProp>
+            <stringProp name="1637">38</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-266952783">
+            <stringProp name="1637">38</stringProp>
+            <stringProp name="1573">16</stringProp>
+            <stringProp name="60">60</stringProp>
           </collectionProp>
         </collectionProp>
       </kg.apc.jmeter.timers.VariableThroughputTimer>
       <hashTree/>
-      <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.TransactionsPerSecondGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Transactions per Second - RPS">
+      <kg.apc.jmeter.timers.VariableThroughputTimer guiclass="kg.apc.jmeter.timers.VariableThroughputTimerGui" testclass="kg.apc.jmeter.timers.VariableThroughputTimer" testname="[Throughput Shaping Timer] Variation" enabled="false">
+        <collectionProp name="load_profile">
+          <collectionProp name="1818503604">
+            <stringProp name="56">8</stringProp>
+            <stringProp name="1598">20</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-294512558">
+            <stringProp name="1598">20</stringProp>
+            <stringProp name="1572">15</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-296102300">
+            <stringProp name="1572">15</stringProp>
+            <stringProp name="1601">23</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-270505166">
+            <stringProp name="1601">23</stringProp>
+            <stringProp name="1575">18</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-295991568">
+            <stringProp name="1575">18</stringProp>
+            <stringProp name="1602">24</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-270499803">
+            <stringProp name="1602">24</stringProp>
+            <stringProp name="1569">12</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-296877393">
+            <stringProp name="1569">12</stringProp>
+            <stringProp name="1629">30</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-265961403">
+            <stringProp name="1629">30</stringProp>
+            <stringProp name="1722">60</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-231733094">
+            <stringProp name="1722">60</stringProp>
+            <stringProp name="1784">80</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-226303475">
+            <stringProp name="1784">80</stringProp>
+            <stringProp name="1629">30</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-267140860">
+            <stringProp name="1629">30</stringProp>
+            <stringProp name="1600">22</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-270545218">
+            <stringProp name="1600">22</stringProp>
+            <stringProp name="1572">15</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-296101122">
+            <stringProp name="1572">15</stringProp>
+            <stringProp name="1602">24</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-270471004">
+            <stringProp name="1602">24</stringProp>
+            <stringProp name="1573">16</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+        </collectionProp>
+      </kg.apc.jmeter.timers.VariableThroughputTimer>
+      <hashTree/>
+      <kg.apc.jmeter.timers.VariableThroughputTimer guiclass="kg.apc.jmeter.timers.VariableThroughputTimerGui" testclass="kg.apc.jmeter.timers.VariableThroughputTimer" testname="[Throughput Shaping Timer] ON&amp;OFF" enabled="false">
+        <collectionProp name="load_profile">
+          <collectionProp name="82838576">
+            <stringProp name="1">1</stringProp>
+            <stringProp name="53">5</stringProp>
+            <stringProp name="1598">20</stringProp>
+          </collectionProp>
+          <collectionProp name="1875071119">
+            <stringProp name="53">5</stringProp>
+            <stringProp name="1604">26</stringProp>
+            <stringProp name="1598">20</stringProp>
+          </collectionProp>
+          <collectionProp name="-1947381887">
+            <stringProp name="1604">26</stringProp>
+            <stringProp name="52">4</stringProp>
+            <stringProp name="1598">20</stringProp>
+          </collectionProp>
+        </collectionProp>
+      </kg.apc.jmeter.timers.VariableThroughputTimer>
+      <hashTree/>
+      <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.TransactionsPerSecondGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="Request Per Seconds">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -77,7 +307,7 @@
         <boolProp name="exclude_checkbox_state">false</boolProp>
       </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
       <hashTree/>
-      <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.ResponseTimesOverTimeGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Response Times Over Time">
+      <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.ResponseTimesOverTimeGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="Response Times Over Time" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -122,7 +352,7 @@
         <boolProp name="exclude_checkbox_state">false</boolProp>
       </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
       <hashTree/>
-      <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.ResponseTimesDistributionGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Response Times Distribution">
+      <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.ResponseTimesDistributionGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="Response Times Distribution" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -167,7 +397,7 @@
         <boolProp name="exclude_checkbox_state">false</boolProp>
       </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
       <hashTree/>
-      <nz.co.breakpoint.jmeter.JUnitReporter guiclass="TestBeanGUI" testclass="nz.co.breakpoint.jmeter.JUnitReporter" testname="JUnit Reporter - Percentile Response Time">
+      <nz.co.breakpoint.jmeter.JUnitReporter guiclass="TestBeanGUI" testclass="nz.co.breakpoint.jmeter.JUnitReporter" testname="Percentile Response Time" enabled="true">
         <stringProp name="filename">C:/Users/jianzhili/repo/HPAPro/10-simulation/jmeter/JUnitReport</stringProp>
         <collectionProp name="kpis">
           <elementProp name="95th Percentile less than 400ms" elementType="nz.co.breakpoint.jmeter.KPI" testname="95th Percentile less than 400ms">
@@ -235,13 +465,13 @@
         <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
-      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="jp@gc - Ultimate Thread Group - Bursting-0.0.1">
+      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="jp@gc - Ultimate Thread Group" enabled="true">
         <collectionProp name="ultimatethreadgroupdata">
-          <collectionProp name="-684197555">
+          <collectionProp name="1326245330">
             <stringProp name="48625">100</stringProp>
             <stringProp name="0">0</stringProp>
             <stringProp name="48">0</stringProp>
-            <stringProp name="50547">300</stringProp>
+            <stringProp name="1537214">2000</stringProp>
             <stringProp name="53">5</stringProp>
           </collectionProp>
         </collectionProp>
