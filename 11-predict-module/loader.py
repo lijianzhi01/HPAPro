@@ -29,7 +29,7 @@ class Lstm001(BaseModel):
     def __init__(self):    
         print(os.path.dirname(__file__))
         config = {
-            'csv_file': f'''{os.path.dirname(__file__)}/data/bursting-cpu-240627-170848.csv''',   
+            'csv_file': f'''{os.path.dirname(__file__)}/data/bursting-cpu-240628-161624.csv''',   
             'machines_num': 1,   
             'lookback_period': 10,   
             'predict_horizontal': 10,   
@@ -39,7 +39,7 @@ class Lstm001(BaseModel):
             'learning_rate': 0.01,   
             'input_size': 1,   
         }
-        self.pth = f'''{os.path.dirname(__file__)}/pth/LSTM_202406271710.pth'''
+        self.pth = f'''{os.path.dirname(__file__)}/pth/LSTM_202406281617.pth'''
         self.pm = PredictModule(LSTM, config)
 
     def train(self):
