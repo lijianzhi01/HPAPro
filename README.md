@@ -48,43 +48,51 @@ cd ./10-simulation/jmeter
 ## 2.2 Export CPU usage from Prometheus
 ```bash
 cd 11-predict-module
-py ./export_metrics.py --start_time 20240616001300 --end_time 20240616002515 --pattern bursting
+py ./export_metrics.py --start_time 20240627103200 --end_time 20240627110400 --pattern bursting
 ```
 
-## 2.3 Train Model (TBD)
+## 2.3 Train Model
+Add Model Config in 11-predict-module/loader
+```bash
+# train model
+py ./train_model.py
+# get model path and fill in back to loader, then make prediction
+py ./validate_model.py
+```
 
 
 # 3 Start Experiment
-## 3.1 Start Simulation in JMeter
-```bash
-cd ./10-simulation/jmeter
-# load BurstingPattern.jmx
 
-~/repo/apache-jmeter-5.6.3/bin/jmeter.bat -n -t C:/Users/jianzhili/repo/HPAPro/10-simulation/jmeter/SimulationPlan.jmx -l C:/Users/jianzhili/repo/HPAPro/10-simulation/jmeter/exp_results/result.csv  -e -o  C:/Users/jianzhili/repo/HPAPro/10-simulation/jmeter/exp_results/report
-```
+## 3.1 Initialize Test Case
 
-## 3.2 Run Test Case
-
-### 3.2.1 K8s Native HPA
+### 3.1.1 K8s Native HPA
 ```bash
 kubectl apply -f 5-demo/hpa-http-requests.yaml
 ```
 
-### 3.2.2 Prediction with LSTM
+### 3.1.2 Prediction with LSTM
+```bash
+kubectl delete hpa http -n demo
+py ./lstm_scaler.py
+```
+
+### 3.1.3 Prediction with LSTM+Attention
 ```bash
 kubectl delete hpa http -n demo
 py ./predict_and_evaluate.py
 ```
 
-### 3.2.3 Prediction with LSTM+Attention
+### 3.1.4 Prediction with LSTM+Attention+MSM (TBD)
 ```bash
-kubectl delete hpa http -n demo
-py ./predict_and_evaluate.py
+
 ```
 
-### 3.2.4 Prediction with LSTM+Attention+MSM (TBD)
-```bash
 
+## 3.2 Start Simulation in JMeter
+```bash
+cd ./10-simulation/jmeter
+# load BurstingPattern.jmx
+~/repo/apache-jmeter-5.6.3/bin/jmeter.bat
 ```
 
 ## 3.3 Check Metrics

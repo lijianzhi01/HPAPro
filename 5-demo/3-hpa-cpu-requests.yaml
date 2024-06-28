@@ -2,7 +2,7 @@
 kind: HorizontalPodAutoscaler
 apiVersion: autoscaling/v2
 metadata:
-  name: http
+  name: cpu
   namespace: demo
 spec:
   scaleTargetRef:
