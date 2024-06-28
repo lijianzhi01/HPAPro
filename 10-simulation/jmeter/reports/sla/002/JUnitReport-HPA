@@ -9,6 +9,6 @@
    <testcase classname="95th Percentile less than 200ms" name="P95(.*) &lt; 200"/>
    <testcase classname="95th Percentile less than 100ms" name="P95(.*) &lt; 100"/>
    <testcase classname="95th Percentile less than 50ms" name="P95(.*) &lt; 50">
-      <failure message="">Actual value 77.000000 exceeds threshold 50.000000 for samples matching " .*"</failure>
+      <failure message="">Actual value 82.000000 exceeds threshold 50.000000 for samples matching " .*"</failure>
    </testcase>
 </testsuite>
