@@ -26,17 +26,17 @@ def fetch_metrics(metric, metric_type, start, end, step):
     
     return data    
 
-def load_metrics():
+def load_metrics(start, end):
     # Load metrics from JSON file    
     with open('metrics.json') as f:    
         metrics_json = json.load(f)  
 
     step = 15   
-    lookback = 3600 * 4  # 4 hours 
-    # lookback = 60 * 20  # 20 minutes
-    now = time.time()    
-    start = ((now - lookback) // step) * step    
-    end = (now // step) * step
+    # lookback = 3600 * 4  # 4 hours 
+    # # lookback = 60 * 20  # 20 minutes
+    # now = time.time()    
+    # start = ((now - lookback) // step) * step    
+    # end = (now // step) * step
 
     # Get data for all metrics    
     all_metrics_data = {}   

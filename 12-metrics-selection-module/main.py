@@ -1,4 +1,6 @@
 from metrics import load_metrics, save_merics_chart
+from datetime import datetime  
+import argparse  
 
 # 1. DBSCAN (Density-Based Spatial Clustering of Applications with Noise): This algorithm views clusters as areas of high density separated by areas of low density. Due to this rather generic view, clusters found by DBSCAN can be any shape, as opposed to k-means which assumes that clusters are convex shaped. The central component to the DBSCAN is the concept of core samples, which are samples that are in areas of high density.
 # 2. HDBSCAN (Hierarchical Density-Based Spatial Clustering of Applications with Noise): HDBSCAN is an extension of DBSCAN algorithm. Unlike DBSCAN, HDBSCAN does not require you to choose an appropriate value for epsilon, which makes it quite useful in practice.
@@ -12,13 +14,22 @@ from metrics import load_metrics, save_merics_chart
 # from optics import cluster_metrics 
 from affinitypropagation import cluster_metrics # best
 
-metrics_list, metrics_data = load_metrics()
-
-save_merics_chart(metrics_data)
-
-cluster_metrics(metrics_list, metrics_data, '_cpu_')
-cluster_metrics(metrics_list, metrics_data, '_memory_')
-cluster_metrics(metrics_list, metrics_data, '_fs_')
-cluster_metrics(metrics_list, metrics_data, '_network_')
-
 # cluster_cpu_metrics(metrics_list, metrics_data)
+
+  
+if __name__ == "__main__":  
+    parser = argparse.ArgumentParser()  
+    parser.add_argument("--start_time", type=str, help="Start time in the format YYYYMMDDHHMMSS")  
+    parser.add_argument("--end_time", type=str, help="End time in the format YYYYMMDDHHMMSS")  
+    args = parser.parse_args()  
+
+    start_time = datetime.strptime(args.start_time, "%Y%m%d%H%M%S").timestamp()  
+    end_time = datetime.strptime(args.end_time, "%Y%m%d%H%M%S").timestamp()  
+    metrics_list, metrics_data = load_metrics(start_time, end_time)
+
+    save_merics_chart(metrics_data)
+
+    cluster_metrics(metrics_list, metrics_data, '_cpu_')
+    cluster_metrics(metrics_list, metrics_data, '_memory_')
+    cluster_metrics(metrics_list, metrics_data, '_fs_')
+    cluster_metrics(metrics_list, metrics_data, '_network_')
