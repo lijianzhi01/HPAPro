@@ -27,7 +27,8 @@ def cluster_metrics(metrics_list, metrics_data, time_string, metric_name='cpu'):
             values_scaled = MinMaxScaler(feature_range=(0, 100)).fit_transform(np.array(values).reshape(-1, 1))
             timeseries_data.append(values_scaled.flatten())    
             metric_names.append(metric)  # store metric name  
-  
+
+    timeseries_data_np = np.array(timeseries_data)
     # Apply Affinity Propagation clustering    
     af = AffinityPropagation(preference=-330).fit(timeseries_data)    
     # [1 2 4 6 9] 5 categories
@@ -42,13 +43,11 @@ def cluster_metrics(metrics_list, metrics_data, time_string, metric_name='cpu'):
     # Plot result  
     plt.figure(figsize=(20, 5 * n_clusters_))  # Adjust as needed  
     plt.title('Estimated number of clusters: %d' % n_clusters_)  
-  
     colors = cycle('bgrcmykbgrcmykbgrcmykbgrcmyk')  
     for k, col in zip(range(n_clusters_), colors):  
         class_members = labels == k  
         cluster_center = timeseries_data[cluster_centers_indices[k]]  
         plt.subplot(n_clusters_, 1, k + 1)  
-        timeseries_data_np = np.array(timeseries_data)
         for x, t_metric_name in zip(timeseries_data_np[class_members], np.array(metric_names)[class_members]):  
             plt.plot(x, col, label=t_metric_name)
         # plt.plot(cluster_center, 'o', markerfacecolor=col, markeredgecolor='k', markersize=14)
