@@ -7,12 +7,27 @@
       </elementProp>
     </TestPlan>
     <hashTree>
-      <kg.apc.jmeter.timers.VariableThroughputTimer guiclass="kg.apc.jmeter.timers.VariableThroughputTimerGui" testclass="kg.apc.jmeter.timers.VariableThroughputTimer" testname="[Throughput Shaping Timer] Debug" enabled="false">
+      <kg.apc.jmeter.timers.VariableThroughputTimer guiclass="kg.apc.jmeter.timers.VariableThroughputTimerGui" testclass="kg.apc.jmeter.timers.VariableThroughputTimer" testname="[Throughput Shaping Timer] 10-20-30" enabled="false">
         <collectionProp name="load_profile">
-          <collectionProp name="1543842168">
+          <collectionProp name="141396672">
+            <stringProp name="53">5</stringProp>
+            <stringProp name="53">5</stringProp>
+            <stringProp name="1722">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-297914684">
             <stringProp name="1567">10</stringProp>
-            <stringProp name="1691">50</stringProp>
-            <stringProp name="48687">120</stringProp>
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-294433756">
+            <stringProp name="1598">20</stringProp>
+            <stringProp name="1598">20</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-267058524">
+            <stringProp name="1629">30</stringProp>
+            <stringProp name="1629">30</stringProp>
+            <stringProp name="60">60</stringProp>
           </collectionProp>
         </collectionProp>
       </kg.apc.jmeter.timers.VariableThroughputTimer>
@@ -544,7 +559,7 @@
         <boolProp name="exclude_checkbox_state">false</boolProp>
       </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
       <hashTree/>
-      <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.ResponseTimesDistributionGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="Response Times Distribution" enabled="true">
+      <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.ResponseTimesDistributionGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="Response Times Distribution">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -674,9 +689,9 @@
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
       </kg.apc.jmeter.threads.UltimateThreadGroup>
       <hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Fibonacci" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Fibonacci">
           <stringProp name="HTTPSampler.domain">127.0.0.1</stringProp>
-          <stringProp name="HTTPSampler.port">62795</stringProp>
+          <stringProp name="HTTPSampler.port">63927</stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.path">/fibonacci</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>

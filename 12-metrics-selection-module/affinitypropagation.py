@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from sklearn.preprocessing import StandardScaler  
+from sklearn.preprocessing import MinMaxScaler  
 from sklearn.cluster import AffinityPropagation  
 from itertools import cycle
   
@@ -24,15 +24,15 @@ def cluster_metrics(metrics_list, metrics_data, time_string, metric_name='cpu'):
         if data['data']['result']:    
             values = [float(x[1]) for x in data['data']['result'][0]['values']]    
             original_timeseries_data.append(values)  # store original data   
-            timeseries_data.append(values)    
+            values_scaled = MinMaxScaler(feature_range=(0, 100)).fit_transform(np.array(values).reshape(-1, 1))
+            timeseries_data.append(values_scaled.flatten())    
             metric_names.append(metric)  # store metric name  
   
-    # Standardize the time series data to have zero mean and unit variance    
-    timeseries_data = StandardScaler().fit_transform(timeseries_data)    
-  
     # Apply Affinity Propagation clustering    
-    af = AffinityPropagation(preference=-200).fit(timeseries_data)    
+    af = AffinityPropagation(preference=-330).fit(timeseries_data)    
+    # [1 2 4 6 9] 5 categories
     cluster_centers_indices = af.cluster_centers_indices_  
+    # [3 0 1 4 2 3 3 4 4 4]
     labels = af.labels_  
   
     n_clusters_ = len(cluster_centers_indices)  
@@ -48,7 +48,8 @@ def cluster_metrics(metrics_list, metrics_data, time_string, metric_name='cpu'):
         class_members = labels == k  
         cluster_center = timeseries_data[cluster_centers_indices[k]]  
         plt.subplot(n_clusters_, 1, k + 1)  
-        for x, t_metric_name in zip(timeseries_data[class_members], np.array(metric_names)[class_members]):  
+        timeseries_data_np = np.array(timeseries_data)
+        for x, t_metric_name in zip(timeseries_data_np[class_members], np.array(metric_names)[class_members]):  
             plt.plot(x, col, label=t_metric_name)
         # plt.plot(cluster_center, 'o', markerfacecolor=col, markeredgecolor='k', markersize=14)
         plt.legend()
