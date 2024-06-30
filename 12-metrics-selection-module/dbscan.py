@@ -3,7 +3,7 @@ import numpy as np
 from sklearn.cluster import DBSCAN  
 from sklearn.preprocessing import StandardScaler  
   
-def cluster_metrics(metrics_list, metrics_data, metric_name='cpu', eps=0.3, min_samples=2):  
+def cluster_metrics(metrics_list, metrics_data, time_string, metric_name='cpu', eps=0.3, min_samples=2):  
     # Get data for all cpu metrics    
     filter_metrics_data = {}    
   

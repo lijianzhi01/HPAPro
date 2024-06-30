@@ -4,13 +4,17 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import AffinityPropagation  
 from itertools import cycle
   
-def cluster_metrics(metrics_list, metrics_data, metric_name='cpu'):  
+def cluster_metrics(metrics_list, metrics_data, time_string, metric_name='cpu'):  
     # Get data for all cpu metrics    
     filter_metrics_data = {}    
   
-    for metric, metric_info in metrics_list.items():    
-        if metric_name in metric.lower():    
-            filter_metrics_data[metric] = metrics_data[metric]    
+    if metric_name == 'all':
+        for metric, metric_info in metrics_list.items():    
+            filter_metrics_data[metric] = metrics_data[metric]  
+    else:
+        for metric, metric_info in metrics_list.items():    
+            if metric_name in metric.lower():    
+                filter_metrics_data[metric] = metrics_data[metric]    
   
     # Prepare data for AffinityPropagation clustering    
     timeseries_data = []    
@@ -27,7 +31,7 @@ def cluster_metrics(metrics_list, metrics_data, metric_name='cpu'):
     timeseries_data = StandardScaler().fit_transform(timeseries_data)    
   
     # Apply Affinity Propagation clustering    
-    af = AffinityPropagation(preference=-50).fit(timeseries_data)    
+    af = AffinityPropagation(preference=-200).fit(timeseries_data)    
     cluster_centers_indices = af.cluster_centers_indices_  
     labels = af.labels_  
   
@@ -49,5 +53,5 @@ def cluster_metrics(metrics_list, metrics_data, metric_name='cpu'):
         # plt.plot(cluster_center, 'o', markerfacecolor=col, markeredgecolor='k', markersize=14)
         plt.legend()
   
-    plt.savefig(f"clusters{metric_name}ap.png")  # Save plot to local file  
+    plt.savefig(f"report/{time_string}/clusters{metric_name}ap.png")  # Save plot to local file  
     # plt.show()  

@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.cluster import MeanShift, estimate_bandwidth  
   
-def cluster_metrics(metrics_list, metrics_data, metric_name='cpu'):  
+def cluster_metrics(metrics_list, metrics_data, time_string, metric_name='cpu'):  
     # Get data for all cpu metrics    
     filter_metrics_data = {}    
   

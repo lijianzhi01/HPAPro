@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.cluster import OPTICS
   
-def cluster_metrics(metrics_list, metrics_data, metric_name='cpu'):  
+def cluster_metrics(metrics_list, metrics_data, time_string, metric_name='cpu'):  
     # Get data for all cpu metrics    
     filter_metrics_data = {}    
   
@@ -51,4 +51,4 @@ def cluster_metrics(metrics_list, metrics_data, metric_name='cpu'):
                  markeredgecolor='k', markersize=14)  
   
     plt.title('Estimated number of clusters: %d' % n_clusters_)  
-    # plt.show()  
+    plt.show()  

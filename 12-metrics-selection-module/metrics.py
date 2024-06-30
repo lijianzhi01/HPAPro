@@ -1,5 +1,5 @@
 import requests    
-import time    
+import os    
 import json    
 import matplotlib.pyplot as plt
     
@@ -46,7 +46,7 @@ def load_metrics(start, end):
 
     return metrics_json, all_metrics_data
 
-def save_merics_chart(metrics_data):
+def save_merics_chart(metrics_data, time_string):
     num_columns = 10  # number of columns for the grid of charts  
     num_metrics = len(metrics_data)  
     num_rows = num_metrics // num_columns if num_metrics % num_columns == 0 else num_metrics // num_columns + 1  
@@ -73,7 +73,14 @@ def save_merics_chart(metrics_data):
     if num_metrics % num_columns != 0:  
         for j in range(num_metrics, num_rows * num_columns):  
             fig.delaxes(axs.flatten()[j])  
+
+        # Define the directory  
+    dir_name = f'report/{time_string}'  
+    
+    # Create the directory if it doesn't exist  
+    if not os.path.exists(dir_name):  
+        os.makedirs(dir_name) 
     
     plt.tight_layout()  
-    plt.savefig('all_charts.png')    
+    plt.savefig(f'report/{time_string}/all_charts.png')    
     # plt.show()  
