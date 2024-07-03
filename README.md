@@ -30,7 +30,7 @@ kubectl apply -f ./5-demo/0-deployment.yaml
 ## 1.3 Metrics Selection Module (TBD)
 ```bash
 cd 12-metrics-selection-module
-py main.py
+py ./main.py --start_time 20240630104930 --end_time 20240630110800
 ```
 
 ## 1.4 Open Simulation
@@ -99,3 +99,7 @@ cd ./10-simulation/jmeter
 * P95 in `10-simulation/jmeter/JUnitReport`
 * Calc Violations
 * CPU usage in grafana
+    ```bash
+    cd 10-simulation
+    py ./ave_pod_cpu_usage.py --start_time 20240703224130 --end_time 20240703230000
+    ```
