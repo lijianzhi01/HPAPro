@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite errors="0"
+           failures="1"
+           name="Percentile Response Time"
+           skipped="0"
+           tests="5">
+   <testcase classname="95th Percentile less than 400ms" name="P95(.*) &lt; 400"/>
+   <testcase classname="95th Percentile less than 300ms" name="P95(.*) &lt; 300"/>
+   <testcase classname="95th Percentile less than 200ms" name="P95(.*) &lt; 200"/>
+   <testcase classname="95th Percentile less than 100ms" name="P95(.*) &lt; 100"/>
+   <testcase classname="95th Percentile less than 50ms" name="P95(.*) &lt; 50">
+      <failure message="">Actual value 79.000000 exceeds threshold 50.000000 for samples matching " .*"</failure>
+   </testcase>
+</testsuite>

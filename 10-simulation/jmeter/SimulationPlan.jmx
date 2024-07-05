@@ -32,7 +32,374 @@
         </collectionProp>
       </kg.apc.jmeter.timers.VariableThroughputTimer>
       <hashTree/>
-      <kg.apc.jmeter.timers.VariableThroughputTimer guiclass="kg.apc.jmeter.timers.VariableThroughputTimerGui" testclass="kg.apc.jmeter.timers.VariableThroughputTimer" testname="[Throughput Shaping Timer] Predictable Bursting - V0.0.2">
+      <kg.apc.jmeter.timers.VariableThroughputTimer guiclass="kg.apc.jmeter.timers.VariableThroughputTimerGui" testclass="kg.apc.jmeter.timers.VariableThroughputTimer" testname="[Throughput Shaping Timer] Predictable Bursting - V0.0.3">
+        <collectionProp name="load_profile">
+          <collectionProp name="-241879092">
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="1598">20</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-238585745">
+            <stringProp name="1598">20</stringProp>
+            <stringProp name="1572">15</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-240174309">
+            <stringProp name="1572">15</stringProp>
+            <stringProp name="1602">24</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-214541835">
+            <stringProp name="1602">24</stringProp>
+            <stringProp name="1575">18</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-240919053">
+            <stringProp name="1575">18</stringProp>
+            <stringProp name="1572">15</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-240176665">
+            <stringProp name="1572">15</stringProp>
+            <stringProp name="1600">22</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-214646026">
+            <stringProp name="1600">22</stringProp>
+            <stringProp name="1569">12</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-241804878">
+            <stringProp name="1569">12</stringProp>
+            <stringProp name="1599">21</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-238546871">
+            <stringProp name="1599">21</stringProp>
+            <stringProp name="1574">17</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-240103629">
+            <stringProp name="1574">17</stringProp>
+            <stringProp name="1600">22</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-213760573">
+            <stringProp name="1600">22</stringProp>
+            <stringProp name="1605">27</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-213581517">
+            <stringProp name="1605">27</stringProp>
+            <stringProp name="1602">24</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-213584648">
+            <stringProp name="1602">24</stringProp>
+            <stringProp name="1631">32</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-210387246">
+            <stringProp name="1631">32</stringProp>
+            <stringProp name="1606">28</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-213433864">
+            <stringProp name="1606">28</stringProp>
+            <stringProp name="1635">36</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-210139463">
+            <stringProp name="1635">36</stringProp>
+            <stringProp name="1631">32</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-210179112">
+            <stringProp name="1631">32</stringProp>
+            <stringProp name="1660">40</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-206875287">
+            <stringProp name="1660">40</stringProp>
+            <stringProp name="1664">44</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-206833282">
+            <stringProp name="1664">44</stringProp>
+            <stringProp name="1637">38</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-209952936">
+            <stringProp name="1637">38</stringProp>
+            <stringProp name="1666">46</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-206656179">
+            <stringProp name="1666">46</stringProp>
+            <stringProp name="1664">44</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-206625148">
+            <stringProp name="1664">44</stringProp>
+            <stringProp name="1691">50</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-203498426">
+            <stringProp name="1691">50</stringProp>
+            <stringProp name="1668">48</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-206474364">
+            <stringProp name="1668">48</stringProp>
+            <stringProp name="1695">54</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-203243575">
+            <stringProp name="1695">54</stringProp>
+            <stringProp name="1699">58</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-203104571">
+            <stringProp name="1699">58</stringProp>
+            <stringProp name="1693">52</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-203321323">
+            <stringProp name="1693">52</stringProp>
+            <stringProp name="1695">54</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-203352354">
+            <stringProp name="1695">54</stringProp>
+            <stringProp name="1668">48</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-206479076">
+            <stringProp name="1668">48</stringProp>
+            <stringProp name="1691">50</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-203503138">
+            <stringProp name="1691">50</stringProp>
+            <stringProp name="1664">44</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-206833282">
+            <stringProp name="1664">44</stringProp>
+            <stringProp name="1637">38</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-209957648">
+            <stringProp name="1637">38</stringProp>
+            <stringProp name="1662">42</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-207015097">
+            <stringProp name="1662">42</stringProp>
+            <stringProp name="1606">28</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-213547355">
+            <stringProp name="1606">28</stringProp>
+            <stringProp name="1600">22</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-214617227">
+            <stringProp name="1600">22</stringProp>
+            <stringProp name="1573">16</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-241105952">
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="1600">22</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-214617227">
+            <stringProp name="1600">22</stringProp>
+            <stringProp name="1573">16</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-240135435">
+            <stringProp name="1573">16</stringProp>
+            <stringProp name="1604">26</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-214471155">
+            <stringProp name="1604">26</stringProp>
+            <stringProp name="1573">16</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-240994445">
+            <stringProp name="1573">16</stringProp>
+            <stringProp name="1570">13</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-240249701">
+            <stringProp name="1570">13</stringProp>
+            <stringProp name="1600">22</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-214617227">
+            <stringProp name="1600">22</stringProp>
+            <stringProp name="1573">16</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-240912109">
+            <stringProp name="1573">16</stringProp>
+            <stringProp name="1599">21</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-238545693">
+            <stringProp name="1599">21</stringProp>
+            <stringProp name="1575">18</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-240067111">
+            <stringProp name="1575">18</stringProp>
+            <stringProp name="1600">22</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-213760573">
+            <stringProp name="1600">22</stringProp>
+            <stringProp name="1605">27</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-213582695">
+            <stringProp name="1605">27</stringProp>
+            <stringProp name="1601">23</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-213621166">
+            <stringProp name="1601">23</stringProp>
+            <stringProp name="1631">32</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-210389602">
+            <stringProp name="1631">32</stringProp>
+            <stringProp name="1604">26</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-213506900">
+            <stringProp name="1604">26</stringProp>
+            <stringProp name="1635">36</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-210165906">
+            <stringProp name="1635">36</stringProp>
+            <stringProp name="1629">30</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-211098200">
+            <stringProp name="1629">30</stringProp>
+            <stringProp name="1637">38</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-209955292">
+            <stringProp name="1637">38</stringProp>
+            <stringProp name="1664">44</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-206832104">
+            <stringProp name="1664">44</stringProp>
+            <stringProp name="1638">39</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-209916418">
+            <stringProp name="1638">39</stringProp>
+            <stringProp name="1666">46</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-206656179">
+            <stringProp name="1666">46</stringProp>
+            <stringProp name="1664">44</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-206723325">
+            <stringProp name="1664">44</stringProp>
+            <stringProp name="1669">49</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-206544269">
+            <stringProp name="1669">49</stringProp>
+            <stringProp name="1666">46</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-206547400">
+            <stringProp name="1666">46</stringProp>
+            <stringProp name="1695">54</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-203243575">
+            <stringProp name="1695">54</stringProp>
+            <stringProp name="1699">58</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-203104571">
+            <stringProp name="1699">58</stringProp>
+            <stringProp name="1693">52</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-203321323">
+            <stringProp name="1693">52</stringProp>
+            <stringProp name="1695">54</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-203352354">
+            <stringProp name="1695">54</stringProp>
+            <stringProp name="1668">48</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-206479076">
+            <stringProp name="1668">48</stringProp>
+            <stringProp name="1691">50</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-203505494">
+            <stringProp name="1691">50</stringProp>
+            <stringProp name="1662">42</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-206905140">
+            <stringProp name="1662">42</stringProp>
+            <stringProp name="1638">39</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-209922308">
+            <stringProp name="1638">39</stringProp>
+            <stringProp name="1661">41</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-206941658">
+            <stringProp name="1661">41</stringProp>
+            <stringProp name="1638">39</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-210027553">
+            <stringProp name="1638">39</stringProp>
+            <stringProp name="1633">34</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-210314210">
+            <stringProp name="1633">34</stringProp>
+            <stringProp name="1606">28</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-213547355">
+            <stringProp name="1606">28</stringProp>
+            <stringProp name="1600">22</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-214617227">
+            <stringProp name="1600">22</stringProp>
+            <stringProp name="1573">16</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+        </collectionProp>
+        <stringProp name="TestPlan.comments">Peek 60
+</stringProp>
+      </kg.apc.jmeter.timers.VariableThroughputTimer>
+      <hashTree/>
+      <kg.apc.jmeter.timers.VariableThroughputTimer guiclass="kg.apc.jmeter.timers.VariableThroughputTimerGui" testclass="kg.apc.jmeter.timers.VariableThroughputTimer" testname="[Throughput Shaping Timer] Predictable Bursting - V0.0.2" enabled="false">
         <collectionProp name="load_profile">
           <collectionProp name="-241879092">
             <stringProp name="1567">10</stringProp>

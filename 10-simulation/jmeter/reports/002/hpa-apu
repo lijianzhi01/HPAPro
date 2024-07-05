@@ -1,0 +1,2 @@
+py .\ave_pod_cpu_usage.py --start_time 20240705162115 --end_time 20240705165515
+33.39553783553592

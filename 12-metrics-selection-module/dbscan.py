@@ -54,5 +54,5 @@ def cluster_metrics(metrics_list, metrics_data, time_string, metric_name='cpu', 
         plt.legend()
   
     plt.title('Estimated number of clusters: %d' % n_clusters_)  
-    plt.savefig(f"report/{time_string}/clusters{metric_name}ap.png")  # Save plot to local file  
+    plt.savefig(f"report/{time_string}/clusters{metric_name}dbs.png")  # Save plot to local file  
     # plt.show()  

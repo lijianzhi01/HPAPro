@@ -3,7 +3,7 @@ import math
 from kubernetes import client, config  
 from kubernetes.client.rest import ApiException  
   
-def scale_deployment(namespace, deployment, predicted_cpu):  
+def scale_deployment(namespace, deployment, predicted_cpu, current_cpu):  
     config.load_kube_config('C:\\Users\\jianzhili\\.kube\\config')
     predicted_cpu = int(1000 * predicted_cpu) # convert to milliCPU
     api_instance = client.AppsV1Api()  
@@ -21,12 +21,57 @@ def scale_deployment(namespace, deployment, predicted_cpu):
             # Calculate the new replica size  
             new_replica_size = math.ceil(predicted_cpu / cpu_request_per_pod_milli) 
             if (new_replica_size <= current_replicas):
-                print("No need to scale in the deployment")
+                print("[Warning] No need to scale in the deployment")
             else: 
                 api_response.spec.replicas = new_replica_size  
                 api_instance.patch_namespaced_deployment_scale(name=deployment, namespace=namespace, body=api_response)  
-                print(f"Scaled deployment {deployment} to {api_response.spec.replicas} replicas. [Predicted CPU: {predicted_cpu}m, Current Requested CPU: {sum_up_requests}m={cpu_request_per_pod_milli}m*{current_replicas}]") 
-        else:  
+                print(f"Scaled out deployment {deployment} to {api_response.spec.replicas} replicas. [Predicted CPU: {predicted_cpu}m, Current Requested CPU: {sum_up_requests}m={cpu_request_per_pod_milli}m*{current_replicas}]") 
+        elif predicted_cpu <= sum_up_requests * 0.7 and current_cpu <= sum_up_requests * 0.7:
+            new_replica_size = math.ceil(predicted_cpu / cpu_request_per_pod_milli) 
+            if (new_replica_size >= current_replicas):
+                print("[Warning] No need to scale out the deployment")
+            else: 
+                api_response.spec.replicas = new_replica_size  
+                api_instance.patch_namespaced_deployment_scale(name=deployment, namespace=namespace, body=api_response)  
+                print(f"Scaled in deployment {deployment} to {api_response.spec.replicas} replicas. [Predicted CPU: {predicted_cpu}m, Current Requested CPU: {sum_up_requests}m={cpu_request_per_pod_milli}m*{current_replicas}]") 
+        else:
+            print("No need to scale the deployment")
+  
+    except ApiException as e:  
+        print(f"Exception when calling AppsV1Api->read_namespaced_deployment: {e}")  
+
+def scale_deployment_v2(namespace, deployment, predicted_cpu, current_cpu):  
+    config.load_kube_config('C:\\Users\\jianzhili\\.kube\\config')
+    predicted_cpu = int(1000 * predicted_cpu) # convert to milliCPU
+    api_instance = client.AppsV1Api()  
+  
+    try:  
+        api_response = api_instance.read_namespaced_deployment(name=deployment, namespace=namespace)  
+        cpu_limit_per_pod = api_response.spec.template.spec.containers[0].resources.limits['cpu']  
+          
+        # Convert the cpu_limit_per_pod to milliCPU  
+        cpu_limit_per_pod_milli = int(cpu_limit_per_pod.replace('m', '')) if 'm' in cpu_limit_per_pod else int(cpu_limit_per_pod) * 1000  
+        current_replicas = int(api_response.spec.replicas)
+        sum_up_requests = current_replicas * cpu_limit_per_pod_milli
+  
+        if predicted_cpu > sum_up_requests * 0.7:
+            # Calculate the new replica size  
+            new_replica_size = math.ceil(predicted_cpu / cpu_limit_per_pod_milli) 
+            if (new_replica_size <= current_replicas):
+                print("[Warning] No need to scale in the deployment")
+            else: 
+                api_response.spec.replicas = new_replica_size  
+                api_instance.patch_namespaced_deployment_scale(name=deployment, namespace=namespace, body=api_response)  
+                print(f"Scaled out deployment {deployment} to {api_response.spec.replicas} replicas. [Predicted CPU: {predicted_cpu}m, Current Limited CPU: {sum_up_requests}m={cpu_limit_per_pod_milli}m*{current_replicas}]") 
+        # elif predicted_cpu <= sum_up_requests * 0.7 and current_cpu <= sum_up_requests * 0.7:
+        #     new_replica_size = math.ceil(predicted_cpu / cpu_limit_per_pod_milli) 
+        #     if (new_replica_size >= current_replicas):
+        #         print("[Warning] No need to scale out the deployment")
+        #     else: 
+        #         api_response.spec.replicas = new_replica_size  
+        #         api_instance.patch_namespaced_deployment_scale(name=deployment, namespace=namespace, body=api_response)  
+        #         print(f"Scaled in deployment {deployment} to {api_response.spec.replicas} replicas. [Predicted CPU: {predicted_cpu}m, Current Limited CPU: {sum_up_requests}m={cpu_limit_per_pod_milli}m*{current_replicas}]") 
+        else:
             print("No need to scale the deployment")
   
     except ApiException as e:  
