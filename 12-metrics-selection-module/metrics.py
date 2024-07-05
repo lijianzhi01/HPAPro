@@ -10,6 +10,8 @@ def fetch_metrics(metric, metric_type, start, end, step):
         query = 'sum(rate({metric}{{container_label_io_kubernetes_pod_namespace="demo"}}[30s]))'.format(metric=metric)    
     elif metric_type == "gauge":    
         query = 'sum({metric}{{container_label_io_kubernetes_pod_namespace="demo"}})'.format(metric=metric)    
+    elif metric_type == "rps":
+        query = 'sum(rate(http_response_time_seconds_count{namespace="demo"}[30s]))'
     else:    
         raise ValueError("Unsupported metric type: {}".format(metric_type))    
     
@@ -43,6 +45,9 @@ def load_metrics(start, end):
     for metric, metric_info in metrics_json.items():    
         data = fetch_metrics(metric, metric_info[0]["type"], start, end, step)    
         all_metrics_data[metric] = data  
+
+    data = fetch_metrics("rps", "rps", start, end, step)    
+    all_metrics_data["rps"] = data
 
     return metrics_json, all_metrics_data
 

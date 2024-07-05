@@ -15,6 +15,7 @@ def cluster_metrics(metrics_list, metrics_data, time_string, metric_name='cpu', 
         for metric, metric_info in metrics_list.items():    
             if metric_name in metric.lower():    
                 filter_metrics_data[metric] = metrics_data[metric]    
+        filter_metrics_data["rps"] = metrics_data["rps"]    
   
     # Prepare data for DBSCAN clustering    
     timeseries_data = []    
