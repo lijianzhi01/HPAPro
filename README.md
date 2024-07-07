@@ -20,8 +20,8 @@ minikube service express -n demo
 ## 1.2 Build and Release App
 ```bash
 cd 0-express
-docker build . -t lijianzhi01/app:0.0.12
-docker push lijianzhi01/app:0.0.12
+docker build . -t lijianzhi01/app:0.0.14
+docker push lijianzhi01/app:0.0.14
 
 kubectl apply -f ./5-demo/0-deployment.yaml
 ```
@@ -30,7 +30,7 @@ kubectl apply -f ./5-demo/0-deployment.yaml
 ## 1.3 Metrics Selection Module
 ```bash
 cd 12-metrics-selection-module
-py ./main.py --start_time 20240630104930 --end_time 20240630110800
+py ./main.py --start_time 20240707234000 --end_time 20240707235845
 ```
 
 ## 1.4 Open Simulation
