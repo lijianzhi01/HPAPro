@@ -69,9 +69,9 @@ class PredictModule:
 
         return data
     
-    def load_data_from_prometheus(self, start = time.time() - 60 * 3, end = time.time()):
+    def load_data_from_prometheus(self, start = time.time() - 60 * 3, end = time.time(), metric = 'container_cpu_usage_seconds_total'):
         params = {  
-            'query': 'sum(rate(container_cpu_usage_seconds_total{container_label_io_kubernetes_pod_namespace="demo"}[30s]))',  
+            'query': f'''sum(rate({metric}{{container_label_io_kubernetes_pod_namespace="demo"}}[30s]))''',  
             'start': start,
             'end': end,
             'step': 15,  # define the interval of time (in seconds) between each data point
@@ -80,15 +80,15 @@ class PredictModule:
         response = requests.get('http://localhost:9090/api/v1/query_range', params=params)  
         data = response.json()  
         values = data['data']['result'][0]['values']
-        df = pd.DataFrame(values, columns=['timestamp', 'cpu_usage'])
+        df = pd.DataFrame(values, columns=['timestamp', metric])
         local_tz = datetime.datetime.now(pytz.timezone('UTC')).astimezone().tzinfo 
         df['timestamp'] = pd.to_datetime(df['timestamp'], unit='s').dt.tz_localize('UTC').dt.tz_convert(local_tz)
         df = df.iloc[-self.lookback_period:]  
         print("Load from Prometheus:------------------------------")
         print(df)
         # Drop the timestamp column  
-        cpu_values = torch.FloatTensor(df['cpu_usage'].values.astype(float))
-        return cpu_values  
+        metric_values = torch.FloatTensor(df[metric].values.astype(float))
+        return metric_values  
     
     # Create sequences    
     def create_sequences(self, input_data):    

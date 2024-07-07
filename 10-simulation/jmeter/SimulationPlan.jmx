@@ -32,7 +32,47 @@
         </collectionProp>
       </kg.apc.jmeter.timers.VariableThroughputTimer>
       <hashTree/>
-      <kg.apc.jmeter.timers.VariableThroughputTimer guiclass="kg.apc.jmeter.timers.VariableThroughputTimerGui" testclass="kg.apc.jmeter.timers.VariableThroughputTimer" testname="[Throughput Shaping Timer] Predictable Bursting - V0.0.3">
+      <kg.apc.jmeter.timers.VariableThroughputTimer guiclass="kg.apc.jmeter.timers.VariableThroughputTimerGui" testclass="kg.apc.jmeter.timers.VariableThroughputTimer" testname="[Throughput Shaping Timer] 1-1-1" enabled="false">
+        <collectionProp name="load_profile">
+          <collectionProp name="140408608">
+            <stringProp name="49">1</stringProp>
+            <stringProp name="49">1</stringProp>
+            <stringProp name="1567">10</stringProp>
+          </collectionProp>
+          <collectionProp name="140408608">
+            <stringProp name="49">1</stringProp>
+            <stringProp name="49">1</stringProp>
+            <stringProp name="1567">10</stringProp>
+          </collectionProp>
+          <collectionProp name="140408608">
+            <stringProp name="49">1</stringProp>
+            <stringProp name="49">1</stringProp>
+            <stringProp name="1567">10</stringProp>
+          </collectionProp>
+        </collectionProp>
+      </kg.apc.jmeter.timers.VariableThroughputTimer>
+      <hashTree/>
+      <kg.apc.jmeter.timers.VariableThroughputTimer guiclass="kg.apc.jmeter.timers.VariableThroughputTimerGui" testclass="kg.apc.jmeter.timers.VariableThroughputTimer" testname="[Throughput Shaping Timer] 1-10-20" enabled="false">
+        <collectionProp name="load_profile">
+          <collectionProp name="140475104">
+            <stringProp name="49">1</stringProp>
+            <stringProp name="49">1</stringProp>
+            <stringProp name="1722">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-241952480">
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="1722">60</stringProp>
+          </collectionProp>
+          <collectionProp name="-294433756">
+            <stringProp name="1598">20</stringProp>
+            <stringProp name="1598">20</stringProp>
+            <stringProp name="60">60</stringProp>
+          </collectionProp>
+        </collectionProp>
+      </kg.apc.jmeter.timers.VariableThroughputTimer>
+      <hashTree/>
+      <kg.apc.jmeter.timers.VariableThroughputTimer guiclass="kg.apc.jmeter.timers.VariableThroughputTimerGui" testclass="kg.apc.jmeter.timers.VariableThroughputTimer" testname="[Throughput Shaping Timer] Predictable Bursting - V0.0.3" enabled="false">
         <collectionProp name="load_profile">
           <collectionProp name="-241879092">
             <stringProp name="1567">10</stringProp>
@@ -394,12 +434,112 @@
             <stringProp name="1573">16</stringProp>
             <stringProp name="1629">30</stringProp>
           </collectionProp>
+          <collectionProp name="-241879092">
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="1598">20</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-238585745">
+            <stringProp name="1598">20</stringProp>
+            <stringProp name="1572">15</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-240174309">
+            <stringProp name="1572">15</stringProp>
+            <stringProp name="1602">24</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-214541835">
+            <stringProp name="1602">24</stringProp>
+            <stringProp name="1575">18</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-240919053">
+            <stringProp name="1575">18</stringProp>
+            <stringProp name="1572">15</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-240176665">
+            <stringProp name="1572">15</stringProp>
+            <stringProp name="1600">22</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-214646026">
+            <stringProp name="1600">22</stringProp>
+            <stringProp name="1569">12</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-241804878">
+            <stringProp name="1569">12</stringProp>
+            <stringProp name="1599">21</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-237691395">
+            <stringProp name="1599">21</stringProp>
+            <stringProp name="1605">27</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-213475094">
+            <stringProp name="1605">27</stringProp>
+            <stringProp name="1631">32</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-210387246">
+            <stringProp name="1631">32</stringProp>
+            <stringProp name="1606">28</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-213332153">
+            <stringProp name="1606">28</stringProp>
+            <stringProp name="1660">40</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-206979354">
+            <stringProp name="1660">40</stringProp>
+            <stringProp name="1637">38</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-209851225">
+            <stringProp name="1637">38</stringProp>
+            <stringProp name="1691">50</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-203503138">
+            <stringProp name="1691">50</stringProp>
+            <stringProp name="1664">44</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-206724503">
+            <stringProp name="1664">44</stringProp>
+            <stringProp name="1668">48</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-206687210">
+            <stringProp name="1668">48</stringProp>
+            <stringProp name="1637">38</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-209960004">
+            <stringProp name="1637">38</stringProp>
+            <stringProp name="1660">40</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-207012865">
+            <stringProp name="1660">40</stringProp>
+            <stringProp name="1629">30</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
+          <collectionProp name="-211987187">
+            <stringProp name="1629">30</stringProp>
+            <stringProp name="1598">20</stringProp>
+            <stringProp name="1629">30</stringProp>
+          </collectionProp>
         </collectionProp>
         <stringProp name="TestPlan.comments">Peek 60
 </stringProp>
       </kg.apc.jmeter.timers.VariableThroughputTimer>
       <hashTree/>
-      <kg.apc.jmeter.timers.VariableThroughputTimer guiclass="kg.apc.jmeter.timers.VariableThroughputTimerGui" testclass="kg.apc.jmeter.timers.VariableThroughputTimer" testname="[Throughput Shaping Timer] Predictable Bursting - V0.0.2" enabled="false">
+      <kg.apc.jmeter.timers.VariableThroughputTimer guiclass="kg.apc.jmeter.timers.VariableThroughputTimerGui" testclass="kg.apc.jmeter.timers.VariableThroughputTimer" testname="[Throughput Shaping Timer] Predictable Bursting - V0.0.2">
         <collectionProp name="load_profile">
           <collectionProp name="-241879092">
             <stringProp name="1567">10</stringProp>
@@ -1058,7 +1198,7 @@
       <hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Fibonacci">
           <stringProp name="HTTPSampler.domain">127.0.0.1</stringProp>
-          <stringProp name="HTTPSampler.port">63927</stringProp>
+          <stringProp name="HTTPSampler.port">65479</stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.path">/fibonacci</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
@@ -1075,7 +1215,7 @@
           </elementProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Content-Type</stringProp>

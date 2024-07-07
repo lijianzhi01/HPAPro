@@ -7,12 +7,12 @@ const host = '0.0.0.0';
 app.use(express.json());     
   
 // Create a histogram metric  
-const responseTimes = new Histogram({  
-  name: 'http_response_time_seconds',  
-  help: 'Histogram of http response durations',  
-  labelNames: ['method', 'status_code'],  
-  buckets: [100, 200, 300, 400, 500, 600, 700, 800] // Buckets for response time from 0.1s to 5s  
-});
+// const responseTimes = new Histogram({  
+//   name: 'http_response_time_seconds',  
+//   help: 'Histogram of http response durations',  
+//   labelNames: ['method', 'status_code'],  
+//   buckets: [100, 200, 300, 400, 500, 600, 700, 800] // Buckets for response time from 0.1s to 5s  
+// });
 
 const fibonacci = (num) => {    
     if (num <= 1) return 1;    
@@ -26,7 +26,31 @@ app.post('/fibonacci', (req, res) => {
   
     const responseTime = Date.now() - start; // Calculate the response time  
     console.log("Response time: ", responseTime, "ms");
-    responseTimes.observe({ method: 'POST', status_code: res.statusCode}, responseTime); // Record to histogram, convert ms to seconds  
+    // responseTimes.observe({ method: 'POST', status_code: res.statusCode}, responseTime); // Record to histogram, convert ms to seconds  
+    
+    res.send(`Fibonacci number is ${fibonacciNumber}!\n`);    
+}); 
+
+
+app.post('/fibonacci_v2', (req, res) => {  
+    const start = Date.now(); // Start the timer  
+
+    let fibSequence = [0, 1];  
+  
+    const n = req.body.number;
+    if (n <= 1) {  
+        return fibSequence[n];  
+    }  
+  
+    for (let i = 2; i <= n; i++) {  
+        fibSequence[i] = fibSequence[i-1] + fibSequence[i-2];  
+    }  
+  
+    const fibonacciNumber = fibSequence[n];    
+  
+    const responseTime = Date.now() - start; // Calculate the response time  
+    console.log("Response time: ", responseTime, "ms");
+    // responseTimes.observe({ method: 'POST', status_code: res.statusCode}, responseTime); // Record to histogram, convert ms to seconds  
     
     res.send(`Fibonacci number is ${fibonacciNumber}!\n`);    
 }); 

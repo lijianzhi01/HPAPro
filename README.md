@@ -20,14 +20,14 @@ minikube service express -n demo
 ## 1.2 Build and Release App
 ```bash
 cd 0-express
-docker build . -t lijianzhi01/app:0.0.11
-docker push lijianzhi01/app:0.0.11
+docker build . -t lijianzhi01/app:0.0.12
+docker push lijianzhi01/app:0.0.12
 
 kubectl apply -f ./5-demo/0-deployment.yaml
 ```
 
 
-## 1.3 Metrics Selection Module (TBD)
+## 1.3 Metrics Selection Module
 ```bash
 cd 12-metrics-selection-module
 py ./main.py --start_time 20240630104930 --end_time 20240630110800
@@ -45,10 +45,12 @@ cd ./10-simulation/jmeter
 # load BurstingPattern.jmx
 ```
 
-## 2.2 Export CPU usage from Prometheus
+## 2.2 Export Metrics from Prometheus
 ```bash
 cd 11-predict-module
-py ./export_metrics.py --start_time 20240627103200 --end_time 20240627110400 --pattern bursting
+py ./export_metrics.py --start_time 20240707195645 --end_time 20240707201445 --pattern bursting --metric container_cpu_usage_seconds_total
+py ./export_metrics.py --start_time 20240707195645 --end_time 20240707201445 --pattern bursting --metric container_memory_failures_total
+py ./export_metrics.py --start_time 20240707195645 --end_time 20240707201445 --pattern bursting --metric container_network_transmit_packets_total
 ```
 
 ## 2.3 Train Model
@@ -84,7 +86,8 @@ py ./predict_and_evaluate.py
 
 ### 3.1.4 Prediction with LSTM+Attention+MSM (TBD)
 ```bash
-
+kubectl delete hpa http -n demo
+py ./msm_lstm_scaler.py
 ```
 
 
@@ -101,5 +104,5 @@ cd ./10-simulation/jmeter
 * CPU usage in grafana
     ```bash
     cd 10-simulation
-    py ./ave_pod_cpu_usage.py --start_time 20240703224130 --end_time 20240703230000
+    py ./ave_pod_cpu_usage.py --start_time 20240707202900 --end_time 20240707204700
     ```
