@@ -21,6 +21,8 @@ class Loader:
             return LSTM002Mem()
         elif model == "LSTM002Metwork":
             return LSTM002Metwork()
+        elif model == "MWDN001":
+            return MWDN001()
         else:
             return None
 
@@ -59,6 +61,7 @@ class LSTM001(BaseModel):
         self.pth = f'''{os.path.dirname(__file__)}/pth/LSTM001_202406282325.pth'''
         self.pm = PredictModule(rLSTM001, config)
 
+# test RMSE:  0.0695825853134464
 from model.lstm002 import LSTM002 as rLSTM002
 class LSTM002(BaseModel): 
     def __init__(self):    
@@ -127,3 +130,22 @@ class LSTM002Metwork(BaseModel):
         }
         self.pth = f'''{os.path.dirname(__file__)}/pth/LSTM002_202407072020.pth'''
         self.pm = PredictModule(rLSTM002, config)
+
+# test RMSE:  0.4903527467029748
+from model.mwdn001 import mwdn001 as rmwdn001
+class MWDN001(BaseModel): 
+    def __init__(self):    
+        print(os.path.dirname(__file__))
+        config = {
+            'csv_file': f'''{os.path.dirname(__file__)}/data/bursting-container_network_transmit_packets_total-240707-201750.csv''',   
+            'machines_num': 1,   
+            'lookback_period': 10,   
+            'predict_horizontal': 10,   
+            'train_set_percentage': 0.7,   
+            'batch_size': 10,
+            'num_epochs': 2000,   
+            'learning_rate': 0.01,   
+            'input_size': 1,
+        }
+        self.pth = f'''{os.path.dirname(__file__)}/pth/mwdn001_202407190206.pth'''
+        self.pm = PredictModule(rmwdn001, config)

@@ -23,7 +23,10 @@ class PredictModule:
         self.input_size = config['input_size']
         self.output_size = config['predict_horizontal']  
         self.data = self.load_data_from_csv()
-        self.model = ModelClass(self.input_size, self.output_size).to(self.device)
+        if ModelClass.__name__.startswith('mwdn'):  
+            self.model = ModelClass(self.lookback_period, self.output_size).to(self.device)
+        else:  
+            self.model = ModelClass(self.input_size, self.output_size).to(self.device)
         self.criterion = torch.nn.MSELoss()    
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.learning_rate) 
   
@@ -124,8 +127,11 @@ class PredictModule:
             
             for machine_id, data_loader in train_data_loader.items():  
                 for i, (seq, labels) in enumerate(data_loader):  
+                    # extract one batch of data, here batch is 512
                     # seq sample: 
                     # torch.Size([512, 144])
+                    # 144 is the number of seq length, which is the same as look back
+                    # 512 is batch size. If we only have 144 data points and set batch size as 512 and set look back 10 and predict 10, then real batch number would be 13.
                     # tensor([[1.1625e-01, 0.0000e+00, 1.3409e-02,  ..., 1.1812e-01, 1.1328e-01,
                     #         1.3212e-01],
                     #         [7.8305e-02, 6.1620e-03, 8.3026e-02,  ..., 8.1897e-02, 8.7666e-02,
@@ -140,6 +146,7 @@ class PredictModule:
                     #         [9.8598e-02, 1.1002e-01, 1.2096e-01,  ..., 7.4919e-02, 8.7025e-02,
                     #         4.7612e-02]]) 
                     seq = torch.FloatTensor(seq).view(-1, self.lookback_period, self.input_size).to(self.device)  
+                    # Now the seq shape is (batch_size, lookback_period, input_size) (5, 10, 1)
                     labels = torch.FloatTensor(labels).view(-1, self.predict_horizontal).to(self.device)  
         
                     self.optimizer.zero_grad()    
