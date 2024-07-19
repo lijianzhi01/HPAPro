@@ -23,7 +23,7 @@ class PredictModule:
         self.input_size = config['input_size']
         self.output_size = config['predict_horizontal']  
         self.data = self.load_data_from_csv()
-        if ModelClass.__name__.startswith('mwdn'):  
+        if ModelClass.__name__.startswith('mwd'):  
             self.model = ModelClass(self.lookback_period, self.output_size).to(self.device)
         else:  
             self.model = ModelClass(self.input_size, self.output_size).to(self.device)

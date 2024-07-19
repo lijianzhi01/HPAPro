@@ -2,5 +2,5 @@ import time
 from loader import Loader
 
 loader = Loader()
-model = loader.pick("LSTM002")
+model = loader.pick("MWDLSTM001")
 pth = model.train()
