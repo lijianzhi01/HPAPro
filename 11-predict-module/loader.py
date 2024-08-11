@@ -12,7 +12,14 @@ class Loader:
 
     def pick(self, model):
         if model == "LSTM001":
+            # LSTM-bursting-cpu
             return LSTM001()
+        elif model == "BiLSTM001":
+            # BiLSTM-bursting-cpu
+            return BiLSTM001()
+        elif model == "MF-LSTM-Attention001":
+            # MF-LSTM-Attention-bursting-cpu
+            return MFLSTMAttention001()
         elif model == "LSTM002":
             return LSTM002()
         elif model == "LSTM002CPU":
@@ -68,6 +75,42 @@ class LSTM001(BaseModel):
         }
         self.pth = f'''{os.path.dirname(__file__)}/pth/LSTM001_202406282325.pth'''
         self.pm = PredictModule(rLSTM001, config)
+
+from model.bilstm_gct import BiLSTMGCT as rBiLSTMGCT
+class BiLSTM001(BaseModel): 
+    def __init__(self):    
+        print(os.path.dirname(__file__))
+        config = {
+            'csv_file': f'''{os.path.dirname(__file__)}/data/bursting-cpu-240628-161624.csv''',   
+            'machines_num': 1,   
+            'lookback_period': 10,   
+            'predict_horizontal': 10,   
+            'train_set_percentage': 0.7,   
+            'batch_size': 10,   
+            'num_epochs': 1000,   
+            'learning_rate': 0.01,   
+            'input_size': 1,   
+        }
+        self.pth = f'''{os.path.dirname(__file__)}/pth/LSTM001_202406282325.pth'''
+        self.pm = PredictModule(rBiLSTMGCT, config)
+
+from model.mwdn001 import mwdn001 as rmwdn001
+class MFLSTMAttention001(BaseModel): 
+    def __init__(self):    
+        print(os.path.dirname(__file__))
+        config = {
+            'csv_file': f'''{os.path.dirname(__file__)}/data/bursting-cpu-240628-161624.csv''',   
+            'machines_num': 1,   
+            'lookback_period': 10,   
+            'predict_horizontal': 10,   
+            'train_set_percentage': 0.7,   
+            'batch_size': 10,   
+            'num_epochs': 1000,   
+            'learning_rate': 0.01,   
+            'input_size': 1,   
+        }
+        self.pth = f'''{os.path.dirname(__file__)}/pth/LSTM001_202406282325.pth'''
+        self.pm = PredictModule(rmwdn001, config)
 
 # test RMSE:  0.0695825853134464
 from model.lstm002 import LSTM002 as rLSTM002
@@ -140,7 +183,6 @@ class LSTM002Metwork(BaseModel):
         self.pm = PredictModule(rLSTM002, config)
 
 # test RMSE:  0.4903527467029748
-from model.mwdn001 import mwdn001 as rmwdn001
 class MWDN001(BaseModel): 
     def __init__(self):    
         print(os.path.dirname(__file__))
@@ -196,7 +238,6 @@ class LSTMGCT001(BaseModel):
         self.pm = PredictModule(rLSTM001, config)
 
 
-from model.bilstm_gct import BiLSTMGCT as rBiLSTMGCT
 class BiLSTMGCT(BaseModel): 
     def __init__(self):    
         print(os.path.dirname(__file__))

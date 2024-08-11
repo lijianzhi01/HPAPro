@@ -74,17 +74,26 @@ kubectl apply -f 5-demo/hpa-http-requests.yaml
 
 ### 3.1.2 Prediction with LSTM
 ```bash
+# Load LSTM Model
 kubectl delete hpa http -n demo
 py ./lstm_scaler.py
 ```
 
-### 3.1.3 Prediction with LSTM+Attention
+### 3.1.3 Prediction with Bi-LSTM
 ```bash
+# Load Bi-LSTM Model
 kubectl delete hpa http -n demo
-py ./predict_and_evaluate.py
+py ./lstm_scaler.py
 ```
 
-### 3.1.4 Prediction with LSTM+Attention+MSM (TBD)
+### 3.1.4 Prediction with MF-LSTM+Attention
+```bash
+# Load MF-LSTM+Attention Model
+kubectl delete hpa http -n demo
+py ./lstm_scaler.py
+```
+
+### 3.1.5 Prediction with LSTM+Attention+MSM
 ```bash
 kubectl delete hpa http -n demo
 py ./msm_lstm_scaler.py

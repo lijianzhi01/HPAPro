@@ -2,3 +2,4 @@
 **/__pycache__
 *.exe
 10-simulation/jmeter/JUnitReport
+jmeter.log
