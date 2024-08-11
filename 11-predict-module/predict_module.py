@@ -8,7 +8,8 @@ import requests
 import time
 import datetime
 import pytz
-  
+from sklearn.metrics import mean_absolute_error 
+
 class PredictModule:  
     def __init__(self, ModelClass, config):    
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')    
@@ -124,6 +125,7 @@ class PredictModule:
         for epoch in range(self.num_epochs):   
             sample_num = 0
             squared_error_sum = 0
+            absolute_error_sum = 0
             
             for machine_id, data_loader in train_data_loader.items():  
                 for i, (seq, labels) in enumerate(data_loader):  
@@ -154,6 +156,8 @@ class PredictModule:
         
                     single_loss = self.criterion(y_pred, labels)    
                     squared_error_sum += single_loss.item() * seq.size(0)  # Multiply by batch size  
+                    absolute_error = torch.abs(y_pred - labels)
+                    absolute_error_sum += absolute_error.sum().item()
                     sample_num += seq.size(0)  
                     single_loss.backward()    
                     self.optimizer.step()    
@@ -161,7 +165,12 @@ class PredictModule:
             if (epoch+1)%100 == 0:  
                 train_mse = squared_error_sum / sample_num  
                 train_rmse = np.sqrt(train_mse)
-                print('epoch: ', epoch+1, 'train RMSE: ', train_rmse, 'train MSE: ', train_mse, 'loss: ', single_loss.item())
+                train_mae = absolute_error_sum / sample_num
+                print('epoch: ', epoch+1, 
+                  'train RMSE: ', train_rmse, 
+                  'train MSE: ', train_mse, 
+                  'train MAE: ', train_mae,  # Print MAE
+                  'loss: ', single_loss.item())
 
     def test_model(self):
         self.model.eval()
@@ -192,11 +201,13 @@ class PredictModule:
         
         # Flatten the lists of predictions and actuals into 1D arrays    
         predictions = np.concatenate(predictions).ravel()    
-        actuals = np.concatenate(actuals).ravel()    
+        actuals = np.concatenate(actuals).ravel() 
+
+        test_mae = mean_absolute_error(actuals, predictions)   
         
         r2 = r2_score(actuals, predictions)    
         
-        print('test RMSE: ', test_rmse/ttl, 'test MSE: ', test_mse/ttl, 'r2-score: ', r2)
+        print('test RMSE: ', test_rmse/ttl, 'test MSE: ', test_mse/ttl, 'test MAE: ', test_mae, 'r2-score: ', r2)
 
     def generate_test_data(self):  
         # Generate a tensor  

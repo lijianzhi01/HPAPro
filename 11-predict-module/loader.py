@@ -25,6 +25,12 @@ class Loader:
             return MWDN001()
         elif model == "MWDLSTM001":
             return MWDLSTM001()
+        elif model == "LSTMGCT":
+            return LSTMGCT001()
+        elif model == "MWDLSTMGCT":
+            return BiLSTMGCT()
+        elif model == "BILSTMGCT":
+            return MWDLSTMGCT001()
         else:
             return None
 
@@ -171,3 +177,58 @@ class MWDLSTM001(BaseModel):
         }
         self.pth = f'''{os.path.dirname(__file__)}/pth/mwdlstm001_202407192012.pth'''
         self.pm = PredictModule(rmwdlstm001, config)
+
+from model.lstm_gct import LSTMGCT as rLSTMGCT
+class LSTMGCT001(BaseModel): 
+    def __init__(self):    
+        print(os.path.dirname(__file__))
+        config = {
+            'csv_file': f'''{os.path.dirname(__file__)}/data/my_cpu_usage_data.csv''',   
+            'machines_num': 1,   
+            'lookback_period': 10,   
+            'predict_horizontal': 10,   
+            'train_set_percentage': 0.7,   
+            'batch_size': 10,
+            'num_epochs': 2000,   
+            'learning_rate': 0.01,   
+            'input_size': 1,
+        }
+        self.pth = f'''{os.path.dirname(__file__)}/pth/tmp.pth'''
+        self.pm = PredictModule(rLSTMGCT, config)
+
+
+from model.bilstm_gct import BiLSTMGCT as rBiLSTMGCT
+class BiLSTMGCT(BaseModel): 
+    def __init__(self):    
+        print(os.path.dirname(__file__))
+        config = {
+            'csv_file': f'''{os.path.dirname(__file__)}/data/my_cpu_usage_data.csv''',   
+            'machines_num': 1,   
+            'lookback_period': 10,   
+            'predict_horizontal': 10,   
+            'train_set_percentage': 0.7,   
+            'batch_size': 10,
+            'num_epochs': 2000,   
+            'learning_rate': 0.01,   
+            'input_size': 1,
+        }
+        self.pth = f'''{os.path.dirname(__file__)}/pth/tmp.pth'''
+        self.pm = PredictModule(rBiLSTMGCT, config)
+
+from model.mwdlstm_gct import MWDLSTMGCT as rMWDLSTMGCT
+class MWDLSTMGCT001(BaseModel): 
+    def __init__(self):    
+        print(os.path.dirname(__file__))
+        config = {
+            'csv_file': f'''{os.path.dirname(__file__)}/data/my_cpu_usage_data.csv''',   
+            'machines_num': 1,   
+            'lookback_period': 10,   
+            'predict_horizontal': 10,   
+            'train_set_percentage': 0.7,   
+            'batch_size': 10,
+            'num_epochs': 2000,   
+            'learning_rate': 0.01,   
+            'input_size': 1,
+        }
+        self.pth = f'''{os.path.dirname(__file__)}/pth/tmp.pth'''
+        self.pm = PredictModule(rMWDLSTMGCT, config)
