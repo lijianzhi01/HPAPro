@@ -27,10 +27,10 @@ class Loader:
             return MWDLSTM001()
         elif model == "LSTMGCT":
             return LSTMGCT001()
-        elif model == "MWDLSTMGCT":
-            return BiLSTMGCT()
         elif model == "BILSTMGCT":
-            return MWDLSTMGCT001()
+            return BiLSTMGCT()
+        elif model == "MWDLSTMGCT":
+            return MWDLSTM002()
         else:
             return None
 
@@ -189,7 +189,7 @@ class LSTMGCT001(BaseModel):
             'predict_horizontal': 10,   
             'train_set_percentage': 0.7,   
             'batch_size': 10,
-            'num_epochs': 2000,   
+            'num_epochs': 200,   
             'learning_rate': 0.01,   
             'input_size': 1,
         }
@@ -215,8 +215,7 @@ class BiLSTMGCT(BaseModel):
         self.pth = f'''{os.path.dirname(__file__)}/pth/tmp.pth'''
         self.pm = PredictModule(rBiLSTMGCT, config)
 
-from model.mwdlstm_gct import MWDLSTMGCT as rMWDLSTMGCT
-class MWDLSTMGCT001(BaseModel): 
+class MWDLSTM002(BaseModel): 
     def __init__(self):    
         print(os.path.dirname(__file__))
         config = {
@@ -226,9 +225,9 @@ class MWDLSTMGCT001(BaseModel):
             'predict_horizontal': 10,   
             'train_set_percentage': 0.7,   
             'batch_size': 10,
-            'num_epochs': 2000,   
+            'num_epochs': 100,   
             'learning_rate': 0.01,   
             'input_size': 1,
         }
-        self.pth = f'''{os.path.dirname(__file__)}/pth/tmp.pth'''
-        self.pm = PredictModule(rMWDLSTMGCT, config)
+        self.pth = f'''{os.path.dirname(__file__)}/pth/mwdlstm001_202407192012.pth'''
+        self.pm = PredictModule(rmwdlstm001, config)

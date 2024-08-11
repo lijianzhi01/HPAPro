@@ -9,6 +9,7 @@ import time
 import datetime
 import pytz
 from sklearn.metrics import mean_absolute_error 
+import matplotlib.pyplot as plt
 
 class PredictModule:  
     def __init__(self, ModelClass, config):    
@@ -172,6 +173,35 @@ class PredictModule:
                   'train MAE: ', train_mae,  # Print MAE
                   'loss: ', single_loss.item())
 
+
+
+    def plot_predictions_vs_actuals(self, predictions, actuals, num_points=200):
+        # Ensure predictions and actuals are 1D arrays for plotting
+        if predictions.ndim > 1:
+            predictions = predictions.ravel()
+        if actuals.ndim > 1:
+            actuals = actuals.ravel()
+
+        if len(predictions) > num_points:
+            predictions = predictions[-num_points:]
+            actuals = actuals[-num_points:]
+
+        # Create a new figure
+        plt.figure(figsize=(12, 6))
+
+        # Plot actuals and predictions
+        plt.plot(actuals, label='Actuals', color='blue', alpha=0.7)
+        plt.plot(predictions, label='Predictions', color='red', alpha=0.7)
+
+        # Add titles and labels
+        plt.title('Actual vs Predicted Values (Last {} Points)'.format(num_points))
+        plt.xlabel('Sample Index')
+        plt.ylabel('Value')
+        plt.legend()
+
+        # Show the plot
+        plt.show()
+
     def test_model(self):
         self.model.eval()
         test_rmse = 0  
@@ -202,6 +232,8 @@ class PredictModule:
         # Flatten the lists of predictions and actuals into 1D arrays    
         predictions = np.concatenate(predictions).ravel()    
         actuals = np.concatenate(actuals).ravel() 
+
+        self.plot_predictions_vs_actuals(predictions, actuals)
 
         test_mae = mean_absolute_error(actuals, predictions)   
         
