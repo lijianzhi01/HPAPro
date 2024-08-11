@@ -2,7 +2,7 @@ import time
 from loader import Loader
 
 loader = Loader()
-model = loader.pick("LSTMGCT")
+model = loader.pick("MF-LSTM-Attention001")
 pth = model.train()
 
 # loader = Loader()

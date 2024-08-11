@@ -11,7 +11,15 @@ class Loader:
         self.ok = "yes"
 
     def pick(self, model):
-        if model == "LSTM001":
+        # Google Cluster Trace V2
+        if model == "LSTMGCT":
+            return LSTMGCT001()
+        elif model == "BILSTMGCT":
+            return BiLSTMGCT()
+        elif model == "MWDLSTMGCT":
+            return MWDLSTM002()
+        # Bursting Patterns
+        elif model == "LSTM001":
             # LSTM-bursting-cpu
             return LSTM001()
         elif model == "BiLSTM001":
@@ -20,6 +28,7 @@ class Loader:
         elif model == "MF-LSTM-Attention001":
             # MF-LSTM-Attention-bursting-cpu
             return MFLSTMAttention001()
+        # Variation Pattern
         elif model == "LSTM002":
             return LSTM002()
         elif model == "LSTM002CPU":
@@ -32,12 +41,6 @@ class Loader:
             return MWDN001()
         elif model == "MWDLSTM001":
             return MWDLSTM001()
-        elif model == "LSTMGCT":
-            return LSTMGCT001()
-        elif model == "BILSTMGCT":
-            return BiLSTMGCT()
-        elif model == "MWDLSTMGCT":
-            return MWDLSTM002()
         else:
             return None
 
@@ -91,7 +94,7 @@ class BiLSTM001(BaseModel):
             'learning_rate': 0.01,   
             'input_size': 1,   
         }
-        self.pth = f'''{os.path.dirname(__file__)}/pth/LSTM001_202406282325.pth'''
+        self.pth = f'''{os.path.dirname(__file__)}/pth/BiLSTMGCT_202408120717.pth'''
         self.pm = PredictModule(rBiLSTMGCT, config)
 
 from model.mwdn001 import mwdn001 as rmwdn001
@@ -109,7 +112,7 @@ class MFLSTMAttention001(BaseModel):
             'learning_rate': 0.01,   
             'input_size': 1,   
         }
-        self.pth = f'''{os.path.dirname(__file__)}/pth/LSTM001_202406282325.pth'''
+        self.pth = f'''{os.path.dirname(__file__)}/pth/mwdn001_202408120721.pth'''
         self.pm = PredictModule(rmwdn001, config)
 
 # test RMSE:  0.0695825853134464
