@@ -24,6 +24,8 @@ class PredictModule:
         self.learning_rate = config['learning_rate']  
         self.input_size = config['input_size']
         self.output_size = config['predict_horizontal']  
+        self.train_data = {}  
+        self.test_data = {} 
         self.data = self.load_data_from_csv()
         if ModelClass.__name__.startswith('mwd'):  
             self.model = ModelClass(self.lookback_period, self.output_size).to(self.device)
@@ -33,8 +35,7 @@ class PredictModule:
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.learning_rate) 
   
     def train(self):
-        self.train_inout_seq, self.test_inout_seq = self.create_test_train_data_seq()  
-
+        self.train_inout_seq, self.test_inout_seq = self.create_test_train_data_seq() 
         self.train_model()
         now = datetime.datetime.now()  
         date_str = now.strftime("%Y%m%d%H%M")
@@ -107,16 +108,14 @@ class PredictModule:
 
     def create_test_train_data_seq(self):
         # Split data into train and test sets    
-        train_data = {}  
-        test_data = {}  
         for machine in list(self.data.keys()):  
             machine_data = self.data[machine]  
             train_size = int(len(machine_data) * self.train_set_percentage)    
-            train_data[machine], test_data[machine] = machine_data[:train_size], machine_data[train_size:]
+            self.train_data[machine], self.test_data[machine] = machine_data[:train_size], machine_data[train_size:]
 
-        train_inout_seq = {machine: self.create_sequences(machine_data) for machine, machine_data in train_data.items()}
-        test_inout_seq = {machine: self.create_sequences(machine_data) for machine, machine_data in test_data.items()}  
-
+        train_inout_seq = {machine: self.create_sequences(machine_data) for machine, machine_data in self.train_data.items()}
+        test_inout_seq = {machine: self.create_sequences(machine_data) for machine, machine_data in self.test_data.items()}  
+        self.plane_test_data = {machine: machine_data[self.lookback_period:len(machine_data)-self.predict_horizontal] for machine, machine_data in self.test_data.items()}  
         return train_inout_seq, test_inout_seq
 
     def train_model(self):
@@ -176,16 +175,6 @@ class PredictModule:
 
 
     def plot_predictions_vs_actuals(self, predictions, actuals, num_points=200):
-        # Ensure predictions and actuals are 1D arrays for plotting
-        if predictions.ndim > 1:
-            predictions = predictions.ravel()
-        if actuals.ndim > 1:
-            actuals = actuals.ravel()
-
-        if len(predictions) > num_points:
-            predictions = predictions[-num_points:]
-            actuals = actuals[-num_points:]
-
         # Create a new figure
         plt.figure(figsize=(12, 6))
 
@@ -194,7 +183,7 @@ class PredictModule:
         plt.plot(predictions, label='Predictions', color='red', alpha=0.7)
 
         # Add titles and labels
-        plt.title('Actual vs Predicted Values (Last {} Points)'.format(num_points))
+        plt.title('Actual vs Predicted Values')
         plt.xlabel('Sample Index')
         plt.ylabel('Value')
         plt.legend()
@@ -207,10 +196,14 @@ class PredictModule:
         test_rmse = 0  
         test_mse = 0  
         ttl = 0  
-        predictions = []    
+        predictions = []  
+        flatten_pred = []  
         actuals = []   
+        mid = 0
+        ori_data = []
         with torch.no_grad():  
             for machine_id, seqs in self.test_inout_seq.items():  
+                ori_data = self.plane_test_data[machine_id]
                 for seq, labels in seqs:    
                     seq = torch.FloatTensor(seq).view(-1, self.lookback_period, self.input_size).to(self.device)    
                     labels = torch.FloatTensor(labels).view(-1, self.predict_horizontal).to(self.device)    
@@ -221,7 +214,10 @@ class PredictModule:
                         print("Shape mismatch: y_test_pred has shape {} but labels have shape {}".format(y_test_pred.shape, labels.shape))    
                         continue    
         
+
                     predictions.append(y_test_pred.cpu().detach().numpy())    
+                    yPredict = y_test_pred.cpu().detach().numpy()
+                    flatten_pred.append(yPredict[0][1])  
                     actuals.append(labels.cpu().detach().numpy())    
         
                     test_loss = self.criterion(y_test_pred, labels)   
@@ -229,12 +225,9 @@ class PredictModule:
                     test_mse += np.mean(test_loss.item())  
                     ttl += 1  
         
-        # Flatten the lists of predictions and actuals into 1D arrays    
+        self.plot_predictions_vs_actuals(flatten_pred, ori_data)
         predictions = np.concatenate(predictions).ravel()    
         actuals = np.concatenate(actuals).ravel() 
-
-        self.plot_predictions_vs_actuals(predictions, actuals)
-
         test_mae = mean_absolute_error(actuals, predictions)   
         
         r2 = r2_score(actuals, predictions)    

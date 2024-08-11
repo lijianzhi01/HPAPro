@@ -178,7 +178,6 @@ class MWDLSTM001(BaseModel):
         self.pth = f'''{os.path.dirname(__file__)}/pth/mwdlstm001_202407192012.pth'''
         self.pm = PredictModule(rmwdlstm001, config)
 
-from model.lstm_gct import LSTMGCT as rLSTMGCT
 class LSTMGCT001(BaseModel): 
     def __init__(self):    
         print(os.path.dirname(__file__))
@@ -189,12 +188,12 @@ class LSTMGCT001(BaseModel):
             'predict_horizontal': 10,   
             'train_set_percentage': 0.7,   
             'batch_size': 10,
-            'num_epochs': 200,   
+            'num_epochs': 2000,   
             'learning_rate': 0.01,   
             'input_size': 1,
         }
         self.pth = f'''{os.path.dirname(__file__)}/pth/tmp.pth'''
-        self.pm = PredictModule(rLSTMGCT, config)
+        self.pm = PredictModule(rLSTM001, config)
 
 
 from model.bilstm_gct import BiLSTMGCT as rBiLSTMGCT
@@ -225,7 +224,7 @@ class MWDLSTM002(BaseModel):
             'predict_horizontal': 10,   
             'train_set_percentage': 0.7,   
             'batch_size': 10,
-            'num_epochs': 100,   
+            'num_epochs': 2000,   
             'learning_rate': 0.01,   
             'input_size': 1,
         }
